@@ -1,17 +1,37 @@
-<div class="modificar-perfil">
-  <div class="contenido">
-    <form class="perfil-form" action="" method="post">
-      <label for="cambiar-costo-hora">Costo/Hora</label>
-      <input type="number" name="cambiar-costo-hora" id="cambiar-costo-hora" min="5">
-      <label for="cambiar-lugar">Lugar</label>
-      <input type="text" name="cambiar-lugar" id="cambiar-lugar">
-      <label for="cambiar-capacidades">Capacidades</label>
-      <textarea type="text" name="cambiar-capacidades" id="cambiar-capacidades" resizable="true"></textarea>
-      <label for="cambiar-actividad-profesional">Actividad Profesional</label>
-      <textarea type="text" name="cambiar-actividad-profesional" id="cambiar-actividad-profesional"
-        resizable="false"></textarea>
-      <button>Cancelar</button>
-      <input type="submit" value="Guardar cambios" disabled>
-    </form>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/forms.css">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="contenedor">
+      <div class="contenido">
+        <form class="perfil-form" action="" method="post">
+
+          <div class="campos">
+            <label for="cambiar-costo-hora">Costo/Hora</label>
+            <input type="number" name="cambiar-costo-hora" id="cambiar-costo-hora" min="5">
+            <label for="cambiar-lugar">Lugar</label>
+            <input type="text" name="cambiar-lugar" id="cambiar-lugar">
+            <label for="cambiar-capacidades">Capacidades</label>
+            <textarea type="text" name="cambiar-capacidades" id="cambiar-capacidades" resizable="true"></textarea>
+            <label for="cambiar-actividad-profesional">Actividad Profesional</label>
+            <textarea type="text" name="cambiar-actividad-profesional" id="cambiar-actividad-profesional"></textarea>
+          </div>
+
+          <div class="botones">
+            <button>Cancelar</button>
+            <input type="submit" value="Guardar cambios">
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+
+</html>

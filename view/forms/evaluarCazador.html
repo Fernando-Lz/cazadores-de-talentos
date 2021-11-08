@@ -1,24 +1,42 @@
-<div class="evaluar-cazador">
-  <div class="contenido">
-    <form class="evaluar-cazador-form" action="" method="post">
-      <p class="nombre-proyecto">Nombre del proyecto: Proyecto X</p>
+<!DOCTYPE html>
+<html lang="en">
 
-      <p class="nombre-cazador">Nombre del cazador: Juan Gómez</p>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/forms.css">
+    <title>Document</title>
+  </head>
 
-      <label for="calificacion">Calificación</label>
-      <select name="calificacion" id="calificacion">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+  <body>
+    <div class="contenedor">
+      <div class="contenido">
+        <form class="evaluar-cazador-form" action="" method="post">
+          <p class="nombre-proyecto"><strong>Proyecto:</strong> Proyecto X</p>
 
-      <label for="comentarios">Comentarios</label>
-      <textarea name="comentarios" id="comentarios" resizable="false"></textarea>
+          <p class="nombre-cazador"><strong>Cazador:</strong> Juan Gómez</p>
 
-      <button>Cancelar</button>
-      <input type="submit" value="Enviar calificación" disabled>
-    </form>
-  </div>
-</div>
+          <div class="campos">
+            <label for="calificacion">Calificación</label>
+            <select name="calificacion" id="calificacion">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+
+            <label for="comentarios">Comentarios</label>
+            <textarea name="comentarios" id="comentarios" resizable="false"></textarea>
+          </div>
+          <div class="botones">
+            <button>Cancelar</button>
+            <input type="submit" value="Enviar calificación">
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+
+</html>

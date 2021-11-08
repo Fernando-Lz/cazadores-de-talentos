@@ -1,26 +1,46 @@
-<div class="crear-proyecto">
-  <div class="contenido">
-    <form class="crear-proyecto-form" action="" method="post">
-      <label for="nombre-proyecto">Nombre del proyecto</label>
-      <input type="text" name="nombre-proyecto" id="nombre-proyecto">
+<!DOCTYPE html>
+<html lang="en">
 
-      <label for="vacantes-proyecto">Número de vacantes</label>
-      <input type="number" name="vacantes-proyecto" id="vacantes-proyecto" min="1">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/forms.css">
+    <title>Document</title>
+  </head>
 
-      <label for="tipo-proyecto">Tipo</label>
-      <select name="tipo-proyecto" id="tipo-proyecto">
-        <option value="web">Desarrollo Web</option>
-        <option value="movil">Desarrollo Móvil</option>
-        <option value="base-datos">Bases de Datos</option>
-        <option value="analisis-datos">Ciencia de Datos</option>
-        <option value="seguridad">Seguridad Informática</option>
-      </select>
+  <body>
+    <div class="contenedor">
+      <div class="contenido">
+        <h2>Crear proyecto</h2>
+        <form class="crear-proyecto-form" action="" method="post">
+          <div class="campos">
+            <label for="nombre-proyecto">Nombre del proyecto</label>
+            <input type="text" name="nombre-proyecto" id="nombre-proyecto">
 
-      <label for="descripcion-proyecto">Descripción</label>
-      <textarea name="descripcion-proyecto" id="descripcion-proyecto" resizable="false"></textarea>
+            <label for="vacantes-proyecto">Número de vacantes</label>
+            <input type="number" name="vacantes-proyecto" id="vacantes-proyecto" min="1">
 
-      <button>Cancelar</button>
-      <input type="submit" value="Crear proyecto" disabled>
-    </form>
-  </div>
-</div>
+            <label for="tipo-proyecto">Tipo</label>
+            <select name="tipo-proyecto" id="tipo-proyecto">
+              <option value="web">Desarrollo Web</option>
+              <option value="movil">Desarrollo Móvil</option>
+              <option value="base-datos">Bases de Datos</option>
+              <option value="analisis-datos">Ciencia de Datos</option>
+              <option value="seguridad">Seguridad Informática</option>
+            </select>
+
+            <label for="descripcion-proyecto">Descripción</label>
+            <textarea name="descripcion-proyecto" id="descripcion-proyecto"></textarea>
+
+            <div class="botones">
+              <button>Cancelar</button>
+              <input type="submit" value="Crear proyecto">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+}
+
+body {
+  height: 100vh;
+}
+
+.contenedor {
+  height: 100%;
+}
+
+.contenedor,
+.campos {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contenido {
+  min-width: 400px;
+  max-width: 800px;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.campos {
+  align-items: flex-start;
+}
+
+p {
+  margin-bottom: 8px;
+}
+
+input,
+label,
+button {
+  width: 50%;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+input,
+select,
+option,
+textarea {
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #444;
+}
+
+textarea {
+  padding: 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+}
+
+label {
+  padding: 0;
+}
+
+textarea {
+  min-width: 400px;
+  max-width: 800px;
+  height: 200px;
+  resize: none;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.botones button,
+.botones input {
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  border: none;
+  padding: 10px;
+}
+
+.botones button {
+  background: white;
+  border: 1px solid #444;
+  margin-right: 5px;
+}
+
+.botones input {
+  margin-left: 5px;
+  background: #25c685;
+  color: white;
+  cursor: pointer;
+}
+
+.botones input:hover {
+  background: #20a771;
+}

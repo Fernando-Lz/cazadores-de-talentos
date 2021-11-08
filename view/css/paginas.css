@@ -41,12 +41,14 @@ p {
 }
 
 .tipo-proyecto {
+  display: inline-block;
   font-size: 18px;
   width: fit-content;
   padding: 5px;
   background: rgb(253, 236, 200);
   border-radius: 5px;
   color: rgb(64, 44, 27);
+  margin-bottom: 15px;
 }
 
 .vacantes strong {
