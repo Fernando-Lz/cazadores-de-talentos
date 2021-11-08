@@ -6,63 +6,97 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil</title>
+    <link rel="stylesheet" href="css/perfiles.css">
+    <link rel="stylesheet" href="css/navbar.css">
   </head>
 
   <body>
-    <h1>Talento</h1>
-    <div class="info-talento">
-      <p>Nombre: Carmen Arias López</p>
-      <p>Reputación: 4.85/5⭐</p>
-      <p>Costo/Hora: $20 USD</p>
-      <P>Lugar: Puebla, México</P>
-      <p>Horario</p>
-      <ul>
-        <li>Lunes a Viernes: 8:00 - 18:00</li>
-        <li>Sábado: 8:00 - 14:00</li>
-      </ul>
-    </div>
-    <div class="opciones-perfil">
-      <a href="/forms/modificarPerfilTalento.html">Modificar Perfil</a>
-    </div>
-    <div class="capacidades">
-      <h3>Capacidades</h3>
-      <ul>
-        <li>Inglés</li>
-        <li>SQL</li>
-        <li>Django</li>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>Git</li>
-      </ul>
-    </div>
+    <nav class="top-bar">
+      <div class="top-bar-item">
+        <a href="../view/perfilTalento.html">Perfil Talento</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="../view/perfilCazador.html">Perfil Cazador</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="../view/proyectosDisponibles.html">Proyectos Disponibles</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="../view/speedHunting.html">Speed Hunting</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="../view/proyectosCazador.html">Mis proyectos(Cazador)</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="../view/proyectosTalento.html">Mis proyectos(Talento)</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="../view/index.html">Cerrar sesión</a>
+      </div>
 
-    <div class="actividad-profesional">
-      <h3>Actividad Profesional</h3>
-      <ul>
-        <li>Desarrollo web fullstack</li>
-        <li>Diseño de base de datos</li>
-      </ul>
-    </div>
-
-    <div class="contratos-hechos">
-      <h3>Contratos hechos</h3>
-      <ul class="contrato-hecho-elemento">
-        <li>Proyecto <span class="nombre-proyecto">Facebook Meta</span></li>
+    </nav>
+    <div class="contenedor">
+      <div class="opciones-perfil">
+        <h1>Talento</h1>
+        <a href="./forms/modificarPerfilTalento.html">
+          <img src="./iconos/edit.svg" alt="Editar perfil">
+        </a>
+      </div>
+      <div class="info-talento">
+        <h3>Información</h3>
+        <p>Nombre: Carmen Arias López</p>
+        <p>Reputación: 4.85/5⭐</p>
+        <p>Costo/Hora: $20 USD</p>
+        <P>Lugar: Puebla, México</P>
+        <p>Horario</p>
         <ul>
-          <li>Cazador: <span class="nombre-cazador">Pedrito Sola</span></li>
-          <li>Calificación: <span class="estrellas-obtenidas">4/5⭐</span></li>
+          <li>Lunes a Viernes: 8:00 - 18:00</li>
+          <li>Sábado: 8:00 - 14:00</li>
         </ul>
-      </ul>
-      <ul class="contrato-hecho-elemento">
-        <li>Proyecto <span class="nombre-proyecto">Whatsapp Meta</span></li>
-        <ul>
-          <li>Cazador: <span class="nombre-cazador">Lolita Ayala</span></li>
-          <li>Calificación: <span class="estrellas-obtenidas">5/5⭐</span></li>
-        </ul>
-      </ul>
-    </div>
+      </div>
+      <div class="talentos">
+        <div class="capacidades">
+          <h3>Capacidades</h3>
+          <ul>
+            <li>Inglés</li>
+            <li>SQL</li>
+            <li>Django</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Git</li>
+          </ul>
+        </div>
 
+        <div class="actividad-profesional">
+          <h3>Actividad Profesional</h3>
+          <ul>
+            <li>Desarrollo web fullstack</li>
+            <li>Diseño de base de datos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="contratos-hechos">
+        <h3>Contratos hechos</h3>
+        <div class="contratos-wrapper">
+          <ul class="contrato-hecho-elemento">
+            <li>Proyecto <span class="nombre-proyecto">Facebook Meta</span></li>
+            <ul>
+              <li>Cazador: <span class="nombre-cazador">Pedrito Sola</span></li>
+              <li>Calificación: <span class="estrellas-obtenidas">4/5⭐</span></li>
+            </ul>
+          </ul>
+          <ul class="contrato-hecho-elemento">
+            <li>Proyecto <span class="nombre-proyecto">Whatsapp Meta</span></li>
+            <ul>
+              <li>Cazador: <span class="nombre-cazador">Lolita Ayala</span></li>
+              <li>Calificación: <span class="estrellas-obtenidas">5/5⭐</span></li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </div>
 
   </body>
 

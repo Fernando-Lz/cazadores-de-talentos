@@ -5,6 +5,10 @@
   color: #444;
 }
 
+body {
+  background: rgba(56, 239, 125, .04);
+}
+
 h1 {
   margin-top: 15px;
   margin-left: 20px;
@@ -21,6 +25,7 @@ h1 {
   margin: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   border-radius: 15px;
+  background: white;
 }
 
 .proyecto:hover {
