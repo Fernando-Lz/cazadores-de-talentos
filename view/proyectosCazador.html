@@ -6,60 +6,137 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Proyectos</title>
+    <link rel="stylesheet" href="css/proyectos.css">
+    <link rel="stylesheet" href="css/navbar.css">
   </head>
 
   <body>
-    <h1>Proyectos</h1>
+    <nav class="top-bar">
+      <div class="top-bar-item">
+        <a href="perfilTalento.html">Perfil Talento</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="perfilCazador.html">Perfil Cazador</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="proyectosDisponibles.html">Proyectos Disponibles</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="speedHunting.html">Speed Hunting</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="proyectosCazador.html">Mis proyectos(Cazador)</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="proyectosTalento.html">Mis proyectos(Talento)</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="index.html">Cerrar sesión</a>
+      </div>
+    </nav>
 
     <div class="opciones-proyectos">
-      <button>Crear proyecto</button>
+      <h1>Proyectos</h1>
+      <a class="agregar-proyecto" href="./forms/crearProyecto.html">
+        <img src="./iconos/add.svg" alt="Editar perfil">
+      </a>
     </div>
 
+    <h3>Proyectos Publicados</h3>
     <div class="proyectos-publicados">
-      <h3>Proyectos Publicados</h3>
-      <ul>
-        <li>
-          Blackboard 2.0
-          <button>Anunciar Proyecto</button>
-          <button>Modificar Proyecto</button>
-        </li>
-        <li>
-          Proyecto Fusión
-          <button>Anunciar Proyecto</button>
-          <button>Modificar Proyecto</button>
-        </li>
-        <li>
-          Proyecto Laguna
-          <button>Anunciar Proyecto</button>
-          <button>Modificar Proyecto</button>
-        </li>
-        <li>
-          Proyecto X
-          <button>Anunciar Proyecto</button>
-          <button>Modificar Proyecto</button>
-        </li>
-      </ul>
+
+      <div class="proyecto">
+        <p class="nombre-proyecto">Blackboard 2.0</p>
+        <a class="boton-anunciar">
+          <img src="./iconos/announcement.svg" alt="Anunciar proyecto" srcset="">
+        </a>
+        <a class="boton-modificar" href="./forms/modificarProyecto.html">
+          <img src="./iconos/edit.svg" alt="Editar proyecto" href="./forms/modificarProyecto.html">
+        </a>
+        <br>
+        <p class="tipo-proyecto">Desarrollo Web</p>
+        <p class="vacantes"><strong>5</strong> puestos disponibles</p>
+        <p class="descripcion">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi esse magni
+          molestiae asperiores,
+          reprehenderit tenetur repellat, deleniti sapiente sint amet temporibus numquam dignissimos officiis maiores.
+          Fugit nihil in optio iusto!</p>
+      </div>
+
+      <div class="proyecto">
+        <p class="nombre-proyecto">Fusión</p>
+        <a class="boton-anunciar">
+          <img src="./iconos/announcement.svg" alt="Anunciar proyecto" srcset="">
+        </a>
+        <a class="boton-modificar" href="./forms/modificarProyecto.html">
+          <img src="./iconos/edit.svg" alt="Editar proyecto" srcset="">
+        </a>
+        <br>
+        <p class="tipo-proyecto">Ciencia de Datos</p>
+        <p class="vacantes"><strong>2</strong> puestos disponibles</p>
+        <p class="descripcion">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi esse magni
+          molestiae asperiores,
+          reprehenderit tenetur repellat, deleniti sapiente sint amet temporibus numquam dignissimos officiis maiores.
+          Fugit nihil in optio iusto!</p>
+      </div>
+
+      <div class="proyecto">
+        <p class="nombre-proyecto">Laguna</p>
+        <a class="boton-anunciar">
+          <img src="./iconos/announcement.svg" alt="Anunciar proyecto" srcset="">
+        </a>
+        <a class="boton-modificar" href="./forms/modificarProyecto.html">
+          <img src="./iconos/edit.svg" alt="Editar proyecto" srcset="">
+        </a>
+        <br>
+        <p class="tipo-proyecto">Seguridad Informática</p>
+        <p class="vacantes"><strong>1</strong> puestos disponibles</p>
+        <p class="descripcion">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi esse magni
+          molestiae asperiores,
+          reprehenderit tenetur repellat, deleniti sapiente sint amet temporibus numquam dignissimos officiis maiores.
+          Fugit nihil in optio iusto!</p>
+      </div>
+
+      <div class="proyecto">
+        <p class="nombre-proyecto">Proyecto X</p>
+        <a class="boton-anunciar">
+          <img src="./iconos/announcement.svg" alt="Anunciar proyecto" srcset="">
+        </a>
+        <a class="boton-modificar" href="./forms/modificarProyecto.html">
+          <img src="./iconos/edit.svg" alt="Editar proyecto" srcset="">
+        </a>
+        <br>
+        <p class="tipo-proyecto">Bases de Datos</p>
+        <p class="vacantes"><strong>3</strong> puestos disponibles</p>
+        <p class="descripcion">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi esse magni
+          molestiae asperiores,
+          reprehenderit tenetur repellat, deleniti sapiente sint amet temporibus numquam dignissimos officiis maiores.
+          Fugit nihil in optio iusto!</p>
+      </div>
     </div>
 
     <div class="contratos-hechos">
       <h3>Contratos hechos</h3>
-      <ul class="contrato-hecho-elemento">
-        <li>Proyecto <span class="nombre-proyecto">Facebook Meta</span></li>
-        <ul>
-          <li>Talento: <span class="nombre-talento">Juan José López</span></li>
-          <li>Calificación: <span class="estrellas-obtenidas">4.4/5⭐</span></li>
+      <div class="contratos-wrapper">
+        <ul class="contrato-hecho-elemento">
+          <span class="nombre-proyecto">Facebook Meta</span>
+          <ul>
+            <span class="nombre-talento">Talento: Pedrito Sola</span>
+            <span class="estrellas-obtenidas">Calificación: 4/5⭐</span>
+          </ul>
         </ul>
-      </ul>
-      <ul class="contrato-hecho-elemento">
-        <li>Proyecto <span class="nombre-proyecto">Whatsapp Meta</span></li>
-        <ul>
-          <li>Talento: <span class="nombre-talento">José Juan Pérez</span></li>
-          <li>Calificación: <span class="estrellas-obtenidas">4.7/5⭐</span></li>
+        <ul class="contrato-hecho-elemento">
+          <span class="nombre-proyecto">Whatsapp Meta</span>
+          <ul>
+            <span class="nombre-talento">Talento: Lolita Ayala</span>
+            <span class="estrellas-obtenidas">Calificación: 5/5⭐</span>
+          </ul>
         </ul>
-      </ul>
+      </div>
     </div>
-  </body>
-  </div>
   </body>
 
 </html>
