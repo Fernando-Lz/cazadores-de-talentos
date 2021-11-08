@@ -6,24 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speed Hunting</title>
+    <link rel="stylesheet" href="css/speedHunting.css">
+    <link rel="stylesheet" href="css/navbar.css">
   </head>
 
   <body>
+    <nav class="top-bar">
+      <div class="top-bar-item">
+        <a href="../view/perfilTalento.html">Perfil Talento</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="../view/perfilCazador.html">Perfil Cazador</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="../view/proyectosDisponibles.html">Proyectos Disponibles</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="../view/speedHunting.html">Speed Hunting</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="../view/proyectosCazador.html">Mis proyectos(Cazador)</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="../view/proyectosTalento.html">Mis proyectos(Talento)</a>
+      </div>
+      <div class="top-bar-item">
+        <a href="../view/index.html">Cerrar sesión</a>
+      </div>
+    </nav>
+    <h1>Speed Hunting</h1>
     <div class="container">
-      <h1>Speed Hunting</h1>
-
       <div class="tarjeta">
-        <p>Nombre proyecto: Instagram Meta</p>
-        <p>Tipo de proyecto: Ciencia de Datos</p>
-        <p>Cazador: Luis Alonso</p>
-        <p>Reputación: 4.8/5⭐</p>
-        <p>Descripción: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor provident ex earum mollitia nam
+        <p class="nombre-proyecto">Nombre: Instagram Meta</p>
+        <p class="tipo-proyecto">Tipo: Ciencia de Datos</p>
+        <div class="info-cazador">
+          <p>Cazador: Luis Alonso</p>
+          <p>4.8/5⭐</p>
+        </div>
+        <p class="descripcion">Descripción: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor provident ex
+          earum mollitia nam
           eligendi atque error quidem eum facere, consequatur corrupti aut natus tempora. Fugit iure non cupiditate hic?
         </p>
-        <p>Vacantes: 5</p>
-
-        <img src="/iconos/cancel.svg" alt="Rechazar">
-        <img src="/iconos/approve.svg" alt="Aplicar">
+        <p><strong>5</strong> vacantes disponibles</p>
+        <div class="botones">
+          <img class="rechazar" src="./iconos/cancel.svg" alt="Rechazar">
+          <img class="aplicar" src="./iconos/approve.svg" alt="Aplicar">
+        </div>
       </div>
     </div>
   </body>
