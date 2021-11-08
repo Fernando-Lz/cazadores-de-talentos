@@ -1,0 +1,26 @@
+<div class="modificar-proyecto">
+  <div class="contenido">
+    <form class="crear-proyecto-form" action="" method="post">
+      <label for="nombre-proyecto">Nombre del proyecto</label>
+      <input type="text" name="nombre-proyecto" id="nombre-proyecto">
+
+      <label for="vacantes-proyecto">Número de vacantes</label>
+      <input type="number" name="vacantes-proyecto" id="vacantes-proyecto" min="1">
+
+      <label for="tipo-proyecto">Tipo</label>
+      <select name="tipo-proyecto" id="tipo-proyecto">
+        <option value="web">Desarrollo Web</option>
+        <option value="movil">Desarrollo Móvil</option>
+        <option value="base-datos">Bases de Datos</option>
+        <option value="analisis-datos">Ciencia de Datos</option>
+        <option value="seguridad">Seguridad Informática</option>
+      </select>
+
+      <label for="descripcion-proyecto">Descripción</label>
+      <textarea name="descripcion-proyecto" id="descripcion-proyecto" resizable="false"></textarea>
+
+      <button>Cancelar</button>
+      <input type="submit" value="Guardar cambios" disabled>
+    </form>
+  </div>
+</div>
