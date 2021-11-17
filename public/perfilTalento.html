@@ -4,37 +4,15 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Perfil</title>
+    <meta name="port" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/perfiles.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Mi Perfil</title>
   </head>
 
   <body>
-    <nav class="top-bar">
-      <div class="top-bar-item">
-        <a href="../view/perfilTalento.html">Perfil Talento</a>
-      </div>
-      <div class="top-bar-item">
-        <a href="../view/perfilCazador.html">Perfil Cazador</a>
-      </div>
-      <div class="top-bar-item">
-        <a href="../view/proyectosDisponibles.html">Proyectos Disponibles</a>
-      </div>
-      <div class="top-bar-item">
-        <a href="../view/speedHunting.html">Speed Hunting</a>
-      </div>
-      <div class="top-bar-item">
-        <a href="../view/proyectosCazador.html">Mis proyectos(Cazador)</a>
-      </div>
-      <div class="top-bar-item">
-        <a href="../view/proyectosTalento.html">Mis proyectos(Talento)</a>
-      </div>
-      <div class="top-bar-item">
-        <a href="../view/index.html">Cerrar sesión</a>
-      </div>
-    </nav>
-
+    <div class="navbar"></div>
     <div class="contenedor">
       <div class="opciones-perfil">
         <h1>Talento</h1>
@@ -99,5 +77,6 @@
     </div>
 
   </body>
+  <script src="controller/navigationBar.js"></script>
 
 </html>
