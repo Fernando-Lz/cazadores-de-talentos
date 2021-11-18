@@ -1,13 +1,20 @@
 $(".navbar").load("../navigationBar.html");
 window.scrollTo(0, 0);
 
+let users = [
+  {
+    permisos: "talento",
+  },
+  {
+    permisos: "cazador",
+  },
+];
+
 // Delete the uncorresponding options from the navbar after the page loads completely
 window.addEventListener("load", function () {
-  user = {};
-  user.permisos = "cazador";
-  if (user.permisos === "talento") {
+  if (users[1].permisos === "talento") {
     $(".cazador-item").remove();
-  } else if (user.permisos === "cazador") {
+  } else if (users[1].permisos === "cazador") {
     $(".talento-item").remove();
   }
 });
