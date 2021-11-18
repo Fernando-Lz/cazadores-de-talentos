@@ -1,16 +1,14 @@
 var mysql = require("mysql");
-
-var con = mysql.createConnection({
+var conn = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "root",
   database: "talenthunter",
 });
 
-con.connect(function (err) {
+conn.connect(function (err) {
   if (err) throw err;
-  con.query("SELECT * FROM talento", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-  });
+  console.log("Database is connected successfully !");
 });
+
+module.exports = conn;

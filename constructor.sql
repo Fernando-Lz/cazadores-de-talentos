@@ -50,12 +50,18 @@ CREATE TABLE proyecto(
   ),
   PRIMARY KEY (idProyecto)
 );
+
 CREATE TABLE contrato(
   idContrato INT NOT NULL AUTO_INCREMENT,
   cazador INT NOT NULL REFERENCES cazador(idCazador),
   talento INT NOT NULL REFERENCES talento(idTalento),
-  nombreProyecto VARCHAR(100) NOT NULL REFERENCES proyecto(nombre),
+  idProyecto INT NOT NULL REFERENCES proyecto(idProyecto),
   horasPago INT NOT NULL,
   puntosContrato INT NOT NULL,
   PRIMARY KEY (idContrato)
+);
+
+CREATE TABLE vacante (
+  proyecto INT NOT NULL REFERENCES proyecto(idProyecto),
+  talento INT REFERENCES talento(idTalento)
 );
