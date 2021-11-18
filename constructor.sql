@@ -3,14 +3,13 @@ DROP DATABASE IF EXISTS TalentHunter;
 
 CREATE DATABASE TalentHunter CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-SET
-  time_zone = '-6:00';
-
 USE TalentHunter;
 
 CREATE TABLE talento(
   idTalento INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(100) NOT NULL,
+  correo VARCHAR(50) NOT NULL,
+  contrasena VARCHAR(50) NOT NULL,
   capacidades VARCHAR(250) NOT NULL,
   actividadProfesional VARCHAR(250) NOT NULL,
   lugar VARCHAR(50) NOT NULL,
@@ -25,6 +24,8 @@ CREATE TABLE talento(
 CREATE TABLE cazador(
   idCazador INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(100) NOT NULL,
+  correo VARCHAR(50) NOT NULL,
+  contrasena VARCHAR(50) NOT NULL,
   lugar VARCHAR(50) NOT NULL,
   puntos INT NOT NULL DEFAULT 0,
   estrellas INT NOT NULL DEFAULT 0,
@@ -48,4 +49,13 @@ CREATE TABLE proyecto(
     OR tipo = 'Seguridad Informática'
   ),
   PRIMARY KEY (idProyecto)
+);
+CREATE TABLE contrato(
+  idContrato INT NOT NULL AUTO_INCREMENT,
+  cazador INT NOT NULL REFERENCES cazador(idCazador),
+  talento INT NOT NULL REFERENCES talento(idTalento),
+  nombreProyecto VARCHAR(100) NOT NULL REFERENCES proyecto(nombre),
+  horasPago INT NOT NULL,
+  puntosContrato INT NOT NULL,
+  PRIMARY KEY (idContrato)
 );

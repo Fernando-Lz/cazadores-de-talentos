@@ -1,0 +1,1 @@
+insert into talento (nombre, capacidades, actividadProfesional, lugar, costoHora, disponibilidadHoraInicio, disponibilidadHoraFin) VALUES ("Fernando", "Ninguna", "T-Systems", "Puebla", 20, 9, 16); 
