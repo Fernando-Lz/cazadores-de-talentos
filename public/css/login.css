@@ -25,6 +25,7 @@ h1 {
   align-items: center;
   flex-direction: column;
   height: auto;
+  margin-bottom: 30px;
 }
 
 .login-form {
@@ -42,8 +43,14 @@ h1 {
 }
 
 input,
-label {
+label{
   width: 50%;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+select {
+  width: 52.5%;
   margin: 5px 0;
   padding: 5px;
 }
@@ -59,4 +66,15 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   cursor: pointer;
+}
+
+.horario {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  align-self: center;
+}
+
+#horario-inicio {
+  margin-right: 10px;
 }

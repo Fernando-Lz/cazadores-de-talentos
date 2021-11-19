@@ -23,12 +23,30 @@
             <input type="password" name="password" id="password">
             <label for="contrasena-confirmacion">Confirmar contraseña</label>
             <input type="password" name="password-confirmacion" id="password-confirmacion">
-            <input type="submit" value="Crear cuenta">
+            <label for="lugar">Lugar</label>
+            <input name="place" id="place">
             <label for="rol">Elige tu rol: </label>
             <select name="rol" id="rol">
               <option value="talento">Talento</option>
               <option value="cazador">Cazador</option>
             </select>
+
+            <!-- Extra data fields for Talento -->
+            <label class="talento" for="capacidades">Capacidades</label>
+            <input class="talento" name="capacidades" id="capacidades">
+            <label class="talento" for="actividad-profesional">Actividad Profesional</label>
+            <input class="talento" name="actividad-profesional" id="actividad-profesional">
+            <label class="talento" for="costo">Sueldo deseado (por hora)</label>
+            <input class="talento" type="number" name="costo" id="costo" min=5>
+            <label class="talento">Horario</label>
+            <div class="talento horario" >
+              <label class="talento" for="horario-inicio">Inicio </label>
+              <input class="talento" type="number" name="horario-inicio" id="horario-inicio" min=0 max=23>
+              <label class="talento" for="horario-fin">Fin </label>
+              <input class="talento" type="number" name="horario-fin" id="horario-fin" min=0 max=23>
+            </div>
+
+            <input type="submit" value="Crear cuenta">
             <a href="index.html">Tengo una cuenta</a>
           </div>
         </form>
@@ -37,6 +55,7 @@
     </div>
   </body>
 
+  <script src="controller/signin.js"></script>
   <script src="./controller/login.js"></script>
 
 </html>
