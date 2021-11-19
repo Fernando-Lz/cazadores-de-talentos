@@ -18,3 +18,7 @@ window.addEventListener("load", function () {
     $(".talento-item").remove();
   }
 });
+
+const logoutSession = () => {
+  sessionStorage.clear();
+};
