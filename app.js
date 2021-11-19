@@ -31,6 +31,30 @@ app.post("/login", function (req, res, next) {
   });
 });
 
+app.post("/signup", function (req, res, next) {
+  console.log(req.body);
+  const nombre = req.body.nombre;
+  const email = req.body.email;
+  const password = req.body.password;
+  const lugar = req.body.lugar;
+  const rol = req.body.rol;
+  var query = ``;
+  if (rol === "talento") {
+    const capacidades = req.body.capacidades;
+    const actividadProfesional = req.body.actividadProfesional;
+    const costo = req.body.costo;
+    const horarioInicio = req.body.horarioInicio;
+    const horarioFin = req.body.horarioFin;
+    query = `insert into talento (nombre, correo, contrasena, capacidades, actividadProfesional, lugar, costoHora, disponibilidadHoraInicio, disponibilidadHoraFin) VALUES ("${nombre}", "${email}", "${password}", "${capacidades}", "${actividadProfesional}", "${lugar}", ${costo}, ${horarioInicio}, ${horarioFin});`;
+  } else {
+    query = `insert into cazador (nombre, correo, contrasena, lugar) VALUES ("${nombre}", "${email}", "${password}", "${lugar}");`;
+  }
+  db.query(query, function (err, data) {
+    if (err) throw err;
+    res.send("true");
+  });
+});
+
 // PORT
 app.listen(PORT, function () {
   console.log(`Server is listening to port ${PORT}`);

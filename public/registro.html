@@ -14,20 +14,20 @@
     <div class="container">
       <h1 class="">Talent Hunt</h1>
       <div class="login-form-container">
-        <form class="login-form" action="javascript:signIn()" method="post">
+        <form class="login-form" action="javascript:signUp()" method="post">
           <h2>Crea una cuenta</h2>
           <div class="campos">
+            <label for="nombre">Nombre completo</label>
+            <input name="nombre" id="nombre">
             <label for="email">Correo Electrónico</label>
             <input type="email" name="email" id="email" placeholder="ej. nombreUsuario@dominio.com">
             <label for="contrasena">Contraseña</label>
             <input type="password" name="password" id="password">
-            <label for="contrasena-confirmacion">Confirmar contraseña</label>
-            <input type="password" name="password-confirmacion" id="password-confirmacion">
             <label for="lugar">Lugar</label>
             <input name="place" id="place">
             <label for="rol">Elige tu rol: </label>
             <select name="rol" id="rol">
-              <option value="talento">Talento</option>
+              <option value="talento" selected>Talento</option>
               <option value="cazador">Cazador</option>
             </select>
 
@@ -39,7 +39,7 @@
             <label class="talento" for="costo">Sueldo deseado (por hora)</label>
             <input class="talento" type="number" name="costo" id="costo" min=5>
             <label class="talento">Horario</label>
-            <div class="talento horario" >
+            <div class="talento horario">
               <label class="talento" for="horario-inicio">Inicio </label>
               <input class="talento" type="number" name="horario-inicio" id="horario-inicio" min=0 max=23>
               <label class="talento" for="horario-fin">Fin </label>
@@ -55,7 +55,6 @@
     </div>
   </body>
 
-  <script src="controller/signin.js"></script>
-  <script src="./controller/login.js"></script>
+  <script src="./controller/signup.js"></script>
 
 </html>

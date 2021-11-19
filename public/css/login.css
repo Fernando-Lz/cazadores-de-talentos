@@ -43,7 +43,7 @@ h1 {
 }
 
 input,
-label{
+label {
   width: 50%;
   margin: 5px 0;
   padding: 5px;
@@ -61,11 +61,17 @@ label {
 
 input[type="submit"] {
   margin-top: 30px;
+  padding: 10px;
   width: 50%;
+  border: none;
+  border-radius: 5px;
+  background: #25c685;
+  color: white;
+  cursor: pointer;
 }
 
 input[type="submit"]:hover {
-  cursor: pointer;
+  background: #20a771;
 }
 
 .horario {
