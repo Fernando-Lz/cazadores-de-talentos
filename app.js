@@ -88,6 +88,35 @@ app.get("/getProjects", function (req, res, next) {
   });
 });
 
+app.post("/getProjectsCazador", function (req, res, next) {
+  const idCazador = req.body.idCazador;
+  const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo, proyecto.vacantes, proyecto.idProyecto FROM contrato, proyecto, cazador WHERE contrato.idProyecto = proyecto.idProyecto AND proyecto.cazador = cazador.idCazador AND proyecto.cazador = ${idCazador} group by nombre;`;
+  db.query(query, function (err, data) {
+    if (err) {
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify(data));
+    }
+  });
+});
+
+app.post("/modifyProject", function (req, res, next) {
+  const idProyecto = req.body.idProyecto;
+  const tipoProyecto = req.body.tipoProyecto;
+  const nombreProyecto = req.body.nombreProyecto;
+  const numeroVacantes = req.body.numeroVacantes;
+  const descripcion = req.body.descripcion;
+  const query = `UPDATE proyecto SET tipo="${tipoProyecto}", nombre = "${nombreProyecto}", vacantes = ${numeroVacantes}, descripcion = "${descripcion}" 
+  WHERE idProyecto = ${idProyecto};`;
+  db.query(query, function (err, data) {
+    if (err) {
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify({ status: true }));
+    }
+  });
+});
+
 // PORT
 app.listen(PORT, function () {
   console.log(`Server is listening to port ${PORT}`);

@@ -16,16 +16,23 @@ fetch("/getProjects", {
     return res.json();
   })
   .then((data) => {
-    for (let i = 0; i < data.length; i++) {
-      $(".container-proyectos").append(projectCard);
-      document.getElementsByClassName("nombre-proyecto")[i].innerHTML =
-        data[i].nombre;
-      document.getElementsByClassName("tipo-proyecto")[i].innerHTML =
-        data[i].tipo;
-      document.getElementsByClassName("numero-vacantes")[i].innerHTML =
-        data[i].vacantes;
-      document.getElementsByClassName("descripcion")[i].innerHTML =
-        data[i].descripcion;
+    if (data.status === false) {
+      alert("Hubo un error :(, intenta recargar la página");
+    } else if (data.length === 0) {
+      alert("Se acabaron los proyectos!\nVuelva pronto 😃");
+    } else {
+      // Insert projects into the DOM
+      for (let i = 0; i < data.length; i++) {
+        $(".container-proyectos").append(projectCard);
+        document.getElementsByClassName("nombre-proyecto")[i].innerHTML =
+          data[i].nombre;
+        document.getElementsByClassName("tipo-proyecto")[i].innerHTML =
+          data[i].tipo;
+        document.getElementsByClassName("numero-vacantes")[i].innerHTML =
+          data[i].vacantes;
+        document.getElementsByClassName("descripcion")[i].innerHTML =
+          data[i].descripcion;
+      }
     }
   })
   .catch((e) => {
