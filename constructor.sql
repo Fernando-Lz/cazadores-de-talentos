@@ -58,6 +58,8 @@ CREATE TABLE contrato(
   puntosContrato INT NOT NULL,
   estrellasObtenidasTalento INT,
   estrellasObtenidasCazador INT,
+  comentariosCazador VARCHAR(250) NOT NULL DEFAULT '',
+  comentariosTalento VARCHAR(250) NOT NULL DEFAULT '',
   statusContrato VARCHAR(10) NOT NULL DEFAULT 'En proceso',
   CONSTRAINT statusValidos CHECK(
     statusContrato = 'En proceso'

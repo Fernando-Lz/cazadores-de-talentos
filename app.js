@@ -77,6 +77,17 @@ app.post("/modifyProfile", function (req, res, next) {
   });
 });
 
+app.get("/getProjects", function (req, res, next) {
+  const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo, proyecto.vacantes FROM contrato, proyecto, cazador WHERE contrato.idProyecto = proyecto.idProyecto AND proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 group by nombre;`;
+  db.query(query, function (err, data) {
+    if (err) {
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify(data));
+    }
+  });
+});
+
 // PORT
 app.listen(PORT, function () {
   console.log(`Server is listening to port ${PORT}`);
