@@ -21,7 +21,9 @@ app.post("/login", function (req, res, next) {
     // If talento does not exists, look for cazador
     if (valueTalento === "[]") {
       db.query(sqlCazador, function (errCazador, dataCazador) {
-        if (errCazador) throw err;
+        if (errCazador) {
+          res.send(JSON.stringify({ status: false }));
+        }
         valueCazador = JSON.stringify(dataCazador);
         res.send(valueCazador);
       });
@@ -32,7 +34,6 @@ app.post("/login", function (req, res, next) {
 });
 
 app.post("/signup", function (req, res, next) {
-  console.log(req.body);
   const nombre = req.body.nombre;
   const email = req.body.email;
   const password = req.body.password;
@@ -50,8 +51,29 @@ app.post("/signup", function (req, res, next) {
     query = `insert into cazador (nombre, correo, contrasena, lugar) VALUES ("${nombre}", "${email}", "${password}", "${lugar}");`;
   }
   db.query(query, function (err, data) {
-    if (err) throw err;
-    res.send("true");
+    if (err) {
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify({ status: true }));
+    }
+  });
+});
+
+app.post("/modifyProfile", function (req, res, next) {
+  const idTalento = req.body.idTalento;
+  const costoHora = req.body.costoHora;
+  const lugar = req.body.lugar;
+  const capacidades = req.body.capacidades;
+  const actividadProfesional = req.body.actividadProfesional;
+
+  const query = `UPDATE talento SET costoHora=${costoHora}, lugar = "${lugar}", capacidades = "${capacidades}", actividadProfesional = "${actividadProfesional}" WHERE idTalento = ${idTalento};`;
+
+  db.query(query, function (err, data) {
+    if (err) {
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify({ status: true }));
+    }
   });
 });
 

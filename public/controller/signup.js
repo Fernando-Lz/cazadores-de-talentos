@@ -26,7 +26,7 @@ $("#horario-fin, #horario-inicio").change(function () {
   });
 });
 
-// Fetch Sign-In
+// Fetch Sign-Up
 function signUp() {
   const nombre = document.getElementById("nombre").value;
   const email = document.getElementById("email").value;
@@ -74,6 +74,14 @@ function signUp() {
   })
     .then((res) => {
       return res.json();
+    })
+    .then((data) => {
+      if (data === false) {
+        alert("Hubo un error :(, inténtelo de nuevo");
+      } else {
+        alert("Ha sido registrado con éxito :)");
+        window.location.href = "../index.html";
+      }
     })
     .catch((e) => {
       alert(e);

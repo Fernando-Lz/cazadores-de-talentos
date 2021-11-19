@@ -1,4 +1,3 @@
--- TODO: permitir que proyecto tenga varios talentos
 DROP DATABASE IF EXISTS TalentHunter;
 
 CREATE DATABASE TalentHunter CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -53,18 +52,19 @@ CREATE TABLE proyecto(
 
 CREATE TABLE contrato(
   idContrato INT NOT NULL AUTO_INCREMENT,
-  cazador INT NOT NULL REFERENCES cazador(idCazador),
   talento INT NOT NULL REFERENCES talento(idTalento),
   idProyecto INT NOT NULL REFERENCES proyecto(idProyecto),
   horasPago INT NOT NULL,
   puntosContrato INT NOT NULL,
-  estrellasObtenidas INT,
+  estrellasObtenidasTalento INT,
+  estrellasObtenidasCazador INT,
   statusContrato VARCHAR(10) NOT NULL DEFAULT 'En proceso',
   CONSTRAINT statusValidos CHECK(
-    statusContrato = 'En proceso',
-    statusContrato = 'Terminado'
+    statusContrato = 'En proceso'
+    OR statusContrato = 'Terminado'
   ),
-  PRIMARY KEY (idContrato)
+  KEY (idContrato),
+  PRIMARY KEY (talento, idProyecto)
 );
 
 CREATE TABLE vacante (
