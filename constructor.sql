@@ -58,6 +58,12 @@ CREATE TABLE contrato(
   idProyecto INT NOT NULL REFERENCES proyecto(idProyecto),
   horasPago INT NOT NULL,
   puntosContrato INT NOT NULL,
+  estrellasObtenidas INT,
+  statusContrato VARCHAR(10) NOT NULL DEFAULT 'En proceso',
+  CONSTRAINT statusValidos CHECK(
+    statusContrato = 'En proceso',
+    statusContrato = 'Terminado'
+  ),
   PRIMARY KEY (idContrato)
 );
 

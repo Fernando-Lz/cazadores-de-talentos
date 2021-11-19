@@ -12,9 +12,9 @@ let users = [
 
 // Delete the uncorresponding options from the navbar after the page loads completely
 window.addEventListener("load", function () {
-  if (users[1].permisos === "talento") {
+  if (sessionStorage.getItem("permisos") === "talento") {
     $(".cazador-item").remove();
-  } else if (users[1].permisos === "cazador") {
+  } else if (sessionStorage.getItem("permisos") === "cazador") {
     $(".talento-item").remove();
   }
 });

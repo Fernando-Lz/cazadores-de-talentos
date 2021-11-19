@@ -22,14 +22,13 @@
       </div>
       <div class="info-talento">
         <h3>Información</h3>
-        <p>Nombre: Carmen Arias López</p>
-        <p>Reputación: 4.85/5⭐</p>
-        <p>Costo/Hora: $20 USD</p>
-        <P>Lugar: Puebla, México</P>
+        <p>Nombre: <span id="nombre"></span></p>
+        <p>Reputación: <span id="reputacion"></span>/5⭐</p>
+        <p>Costo/Hora: $<span id="costoHora"></span> USD</p>
+        <P>Lugar: <span id="lugar"></span></P>
         <p>Horario</p>
         <ul>
-          <li>Lunes a Viernes: 8:00 - 18:00</li>
-          <li>Sábado: 8:00 - 14:00</li>
+          <li>Lunes a Viernes: <span id="horaInicio"></span>:00 - <span id="horaFin"></span>:00</li>
         </ul>
       </div>
       <div class="talentos">
@@ -54,29 +53,10 @@
           </ul>
         </div>
       </div>
-
-      <div class="contratos-hechos">
-        <h3>Contratos hechos</h3>
-        <div class="contratos-wrapper">
-          <ul class="contrato-hecho-elemento">
-            <span class="nombre-proyecto">Facebook Meta</span>
-            <ul>
-              <span class="nombre-cazador">Talento: Pedrito Sola</span>
-              <span class="estrellas-obtenidas">Calificación: 4/5⭐</span>
-            </ul>
-          </ul>
-          <ul class="contrato-hecho-elemento">
-            <span class="nombre-proyecto">Whatsapp Meta</span>
-            <ul>
-              <span class="nombre-cazador">Talento: Lolita Ayala</span>
-              <span class="estrellas-obtenidas">Calificación: 5/5⭐</span>
-            </ul>
-          </ul>
-        </div>
-      </div>
     </div>
 
   </body>
-  <script src="controller/navigationBar.js"></script>
+  <script src="./controller/navigationBar.js"></script>
+  <script src="./controller/perfil.js"></script>
 
 </html>

@@ -41,7 +41,8 @@ p {
 
 input,
 label,
-button {
+button,
+a {
   width: 50%;
   margin: 5px 0;
   padding: 5px;
@@ -81,8 +82,9 @@ textarea {
   width: 100%;
 }
 
-.botones button,
+.botones a,
 .botones input {
+  text-decoration: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 18px;
@@ -90,10 +92,12 @@ textarea {
   padding: 10px;
 }
 
-.botones button {
+.botones a {
+  text-align: center;
   background: white;
   border: 1px solid #444;
   margin-right: 5px;
+  width: 45%;
 }
 
 .botones input {
