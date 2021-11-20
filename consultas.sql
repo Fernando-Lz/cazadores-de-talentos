@@ -8,6 +8,7 @@ insert into talento (nombre, correo, contrasena, capacidades, actividadProfesion
 insert into talento (nombre, correo, contrasena, capacidades, actividadProfesional, lugar, costoHora, disponibilidadHoraInicio, disponibilidadHoraFin) VALUES ("Joaquin", "jarjart@gmail.com", "a@98.0.jum", "Bases de Datos, Desarrollador de Apps iOS", "Microsoft, Sony", "Jalisco", 20, 11, 19);
 insert into talento (nombre, correo, contrasena, capacidades, actividadProfesional, lugar, costoHora, disponibilidadHoraInicio, disponibilidadHoraFin) VALUES ("Luis Angel", "langel.2000@gmail.com", "t.w@20.aert34", "Desarrollador Web Frontend, Git", "Freelance", "Nuevo Leon", 29, 6, 16);
 insert into talento (nombre, correo, contrasena, capacidades, actividadProfesional, lugar, costoHora, disponibilidadHoraInicio, disponibilidadHoraFin) VALUES ("Hector", "hct.1990@gmail.com", "optimusprime6598", "Programador de Sistemas Embebidos, HTML, CSS", "Volkswagen", "CDMX", 27, 12, 19);
+insert into talento (nombre, correo, contrasena, capacidades, actividadProfesional, lugar, costoHora, disponibilidadHoraInicio, disponibilidadHoraFin) VALUES ("Gustavo", "grua.1234@outlook.com", "core12.87@f", "Bases de Datos, Git, Ruby on Rails", "Freelance", "Baja California", 22, 12, 24);
 
 insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Pedro", "pedro.solamx@gmail.com", "trineo1241", "Puebla");
 insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Martha", "m.gerides@outlook.com", "@contrasena12", "Quintana Roo");

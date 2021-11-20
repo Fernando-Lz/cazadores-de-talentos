@@ -47,6 +47,12 @@ CREATE TABLE proyecto(
     OR tipo = 'Ciencia de Datos'
     OR tipo = 'Seguridad Informática'
   ),
+  anunciado VARCHAR(1) NOT NULL DEFAULT 'F',
+  CONSTRAINT statusAnunciado CHECK(
+    anunciado = 'F'
+    OR anunciado = 'V'
+  ),
+
   PRIMARY KEY (idProyecto)
 );
 
