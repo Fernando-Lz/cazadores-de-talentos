@@ -85,6 +85,7 @@ app.get("/getProjects", function (req, res, next) {
   const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo, proyecto.vacantes FROM contrato, proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 group by nombre;`;
   db.query(query, function (err, data) {
     if (err) {
+      console.log(err)
       res.send(JSON.stringify({ status: false }));
     } else {
       res.send(JSON.stringify(data));
@@ -157,6 +158,20 @@ app.post("/getAllProjects", function (req, res, next) {
       res.send(JSON.stringify({ status: false }));
     } else {
       res.send(JSON.stringify(data));
+    }
+  });
+});
+
+app.post("/applyProject", function (req, res, next) {
+  const idTalento = req.body.idTalento;
+  const idProyecto = req.body.idProyecto;
+  const query = `INSERT INTO solicitudes (talento, cazador, idProyecto) SELECT ${idTalento}, cazador.idCazador, ${idProyecto} FROM proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.idProyecto = ${idProyecto};`;
+  db.query(query, function (err, data) {
+    if (err) {
+      console.log(err)
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify({ status: true }));
     }
   });
 });

@@ -16,6 +16,7 @@ fetch("/getProjects", {
     return res.json();
   })
   .then((data) => {
+    console.log(data)
     if (data.status === false) {
       alert("Hubo un error :(, intenta recargar la página");
     } else if (data.length === 0) {

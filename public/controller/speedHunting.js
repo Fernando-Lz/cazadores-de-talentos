@@ -87,6 +87,8 @@ function applyProject() {
       if (data.status === false) {
         alert("Hubo un error al procesar tu solicitud");
       } else {
+        resetCard()
+        alert("Tu solicitud ha si procesada con éxito, el cazador se pondrá en contacto contigo por correo electrónico")
       }
     })
     .catch((e) => {
