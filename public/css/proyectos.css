@@ -56,7 +56,8 @@ h3 {
   transition: 0.2s;
 }
 
-.nombre-proyecto {
+.nombre-proyecto,
+.nombre-proyecto-solicitud {
   font-size: 24px;
   margin-bottom: 10px;
   font-weight: 600;
@@ -92,13 +93,15 @@ h3 {
   margin-bottom: 5px;
 }
 
-.contratos-wrapper {
+.contratos-wrapper,
+.solicitudes-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-template-rows: 1fr;
 }
 
-.contrato-hecho-elemento {
+.contrato-hecho-elemento,
+.solicitud-elemento {
   padding: 10px;
   margin: 15px;
   border-radius: 8px;
@@ -114,7 +117,32 @@ h3 {
   cursor: pointer;
 }
 
-.nombre-talentom,
+.nombre-talento,
 .estrellas-obtenidas {
   display: block;
+}
+
+.botones-solicitud {
+  display: flex;
+  justify-content: space-between;
+}
+
+.botones-solicitud a {
+  width: 45%;
+  border-radius: 8px;
+  padding: 5px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+
+.aceptar {
+  background: #25c685;
+}
+
+.rechazar {
+  background: #ff9b9b;
 }

@@ -1,9 +1,9 @@
 // Template for projectCard
 const projectCard = `<div class="proyecto">
                       <p class="nombre-proyecto"></p>
-                      <a class="boton-anunciar">
+                      <span class="boton-anunciar">
                           <img src="../iconos/announcement.svg" alt="Anunciar proyecto" onclick="anounceProject()">
-                      </a>
+                      </span>
                       <span>
                         <img class="boton-modificar" src="../iconos/edit.svg" alt="Editar proyecto" onclick="javascript:modifyProject(this.parentNode.parentNode, this.id);">
                       </span>
@@ -29,12 +29,12 @@ fetch("/getProjectsCazador", {
     if (data.status === false) {
       alert("Hubo un error :(, intenta recargar la página");
     } else {
-      console.log(data);
       // Insert projects into the DOM
       for (let i = 0; i < data.length; i++) {
         $(".proyectos-publicados").append(projectCard);
         if (data[i].anunciado === "V") {
-          $(".boton-anunciar").remove();
+          let card = document.getElementsByClassName("proyecto")[i];
+          card.getElementsByTagName("span")[0].remove();
         }
         document.getElementsByClassName("nombre-proyecto")[i].innerHTML =
           data[i].nombre;
@@ -106,5 +106,3 @@ function anounceProject() {
       });
   }
 }
-
-function confirmAnouncement(precioFinal) {}
