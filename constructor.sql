@@ -43,7 +43,7 @@ CREATE TABLE proyecto(
   CONSTRAINT tiposValidos CHECK (
     tipo = 'Desarrollo Web'
     OR tipo = 'Desarrollo Móvil'
-    OR tipo = 'Base de Datos'
+    OR tipo = 'Bases de Datos'
     OR tipo = 'Ciencia de Datos'
     OR tipo = 'Seguridad Informática'
   ),

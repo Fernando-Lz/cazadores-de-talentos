@@ -10,6 +10,7 @@ function createProject() {
       "Content-type": "application/json; charset=UTF-8",
     },
     body: JSON.stringify({
+      idCazador: sessionStorage.getItem("idCazador"),
       tipoProyecto: tipoProyecto,
       nombreProyecto: nombreProyecto,
       numeroVacantes: numeroVacantes,

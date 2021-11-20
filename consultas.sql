@@ -24,13 +24,13 @@ insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Gerardo", "ai.s
 insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (1, 10, "Tienda de Pasteleria Pepita", "Desarrollo Web", 5, "Creacion de una tienda en linea.");
 insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (2, 4, "Nueva App - Trelawny", "Desarrollo Móvil", 2, "Creacion de una app de telefono.");
 insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (3, 1, "Nueva App -  Mark-it", "Desarrollo Móvil", 2, "Creacion de una app para el telefono");
-insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (4, 5, "Base de Datos de Protea", "Base de Datos", 1, "Creacion de un SGBD MySQL.");
+insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (4, 5, "Bases de Datos de Protea", "Bases de Datos", 1, "Creacion de un SGBD MySQL.");
 insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (5, 2, "Netscout - Trabajo temporal", "Seguridad Informática", 2, "Se busca un experto en AES.");
 insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (6, 8, "Neopets - Nuevo Inicio", "Desarrollo Web", 1, "Creacion de una página web.");
 insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (7, 7, "Garuda - Pagina Web", "Desarrollo Web", 1, "Creacion de una página web.");
 insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (8, 3, "Count-it - Estudio de aglomeraciones", "Ciencia de Datos", 1, "Creación de un sistema para conteo de aglomeraciones.");
 insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (9, 6, "iText - Desarrollo iOS", "Desarrollo Móvil", 1, "Mantenimiento de una aplicacion movil iOS.");
-insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (10, 9, "MarianaDB - Rediseno de base de datos", "Base de Datos", 3, "Rediseno de una base de datos centralizada.");
+insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (10, 9, "MarianaDB - Rediseno de Bases de datos", "Bases de Datos", 3, "Rediseno de una Bases de datos centralizada.");
 
 
 
