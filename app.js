@@ -82,12 +82,26 @@ app.post("/modifyProfile", function (req, res, next) {
 });
 
 app.get("/getProjects", function (req, res, next) {
-  const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo, proyecto.vacantes FROM contrato, proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 group by nombre;`;
+  const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo, proyecto.vacantes FROM contrato, proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 AND proyecto.anunciado = "V" group by nombre;`;
   db.query(query, function (err, data) {
     if (err) {
+      console.log(err);
       res.send(JSON.stringify({ status: false }));
     } else {
       res.send(JSON.stringify(data));
+    }
+  });
+});
+
+app.post("/getActiveProject", function (req, res, next) {
+  const idTalento = req.body.idTalento;
+  const query = `SELECT proyecto.nombre FROM proyecto WHERE proyecto.talento = ${idTalento} GROUP BY proyecto.nombre;`;
+  db.query(query, function (err, data) {
+    proyectoList = JSON.stringify(data);
+    if (proyectoList === "[]") {
+      res.send(JSON.stringify({ activeProject: false }));
+    } else {
+      res.send(JSON.stringify({ activeProject: true }));
     }
   });
 });
@@ -163,7 +177,17 @@ app.post("/createProject", function (req, res, next) {
 
 app.post("/getAllProjects", function (req, res, next) {
   const idTalento = req.body.idTalento;
-  const query = `SELECT proyecto.idProyecto, proyecto.nombre AS nombreProyecto, proyecto.tipo, proyecto.descripcion, proyecto.vacantes, cazador.nombre AS nombreCazador, cazador.estrellas FROM proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 AND proyecto.talento != ${idTalento} GROUP BY proyecto.nombre;`;
+  const query = `SELECT a.idProyecto, a.nombreProyecto, a.tipo, a.descripcion, a.vacantes, a.nombreCazador, a.estrellas FROM 
+  (
+    SELECT proyecto.idProyecto, proyecto.nombre AS nombreProyecto, proyecto.tipo, proyecto.descripcion, proyecto.vacantes, cazador.nombre AS nombreCazador, cazador.estrellas FROM proyecto, cazador
+    WHERE proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 AND proyecto.talento != ${idTalento}
+  ) a
+  LEFT JOIN (
+    SELECT proyecto.idProyecto, proyecto.nombre AS nombreProyecto, proyecto.tipo, proyecto.descripcion, proyecto.vacantes, cazador.nombre AS nombreCazador, cazador.estrellas FROM solicitudes, proyecto, cazador 
+    WHERE proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 AND proyecto.talento != ${idTalento} AND proyecto.idProyecto = solicitudes.idProyecto
+  ) b
+  ON a.idProyecto = b.idProyecto
+  WHERE b.idProyecto IS NULL;`;
   db.query(query, function (err, data) {
     if (err) {
       res.send(JSON.stringify({ status: false }));
@@ -173,15 +197,15 @@ app.post("/getAllProjects", function (req, res, next) {
   });
 });
 
-app.post("/getActiveProject", function (req, res, next) {
+app.post("/applyProject", function (req, res, next) {
   const idTalento = req.body.idTalento;
-  const query = `SELECT proyecto.nombre FROM proyecto WHERE proyecto.talento = ${idTalento} GROUP BY proyecto.nombre;`;
+  const idProyecto = req.body.idProyecto;
+  const query = `INSERT INTO solicitudes (talento, cazador, idProyecto) SELECT ${idTalento}, cazador.idCazador, ${idProyecto} FROM proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.idProyecto = ${idProyecto};`;
   db.query(query, function (err, data) {
-    proyectoList = JSON.stringify(data);
-    if (proyectoList === "[]") {
-      res.send(JSON.stringify({ activeProject: false }));
+    if (err) {
+      res.send(JSON.stringify({ status: false }));
     } else {
-      res.send(JSON.stringify({ activeProject: true }));
+      res.send(JSON.stringify({ status: true }));
     }
   });
 });
