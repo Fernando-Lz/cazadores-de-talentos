@@ -1,7 +1,7 @@
 // Set common attributes
 document.getElementById("nombre").innerHTML = sessionStorage.getItem("nombre");
 document.getElementById("reputacion").innerHTML =
-  sessionStorage.getItem("estrellas");
+  sessionStorage.getItem("totalEstrellas");
 document.getElementById("lugar").innerHTML = sessionStorage.getItem("lugar");
 // Set talento card values
 if (sessionStorage.getItem("permisos") === "talento") {
@@ -32,11 +32,12 @@ if (sessionStorage.getItem("permisos") === "talento") {
 }
 // Set cazador card values
 else {
-  document.getElementById("contratos-hechos").innerHTML = 0;
+  document.getElementById("proyectos-publicados").innerHTML =
+    sessionStorage.getItem("totalProyectos");
   document.getElementById("puntos").innerHTML =
-    sessionStorage.getItem("puntos");
-  let puntos = Math.floor(sessionStorage.getItem("puntos") / 25);
-  document.getElementById("nivel").innerHTML = puntos;
+    sessionStorage.getItem("totalPuntos");
+  let nivel = Math.floor(sessionStorage.getItem("totalPuntos") / 25);
+  document.getElementById("nivel").innerHTML = nivel;
 }
 
 function cancelEdit() {

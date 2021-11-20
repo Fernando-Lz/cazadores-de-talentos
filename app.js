@@ -14,7 +14,7 @@ app.post("/login", function (req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
   var sqlTalento = `SELECT *, NULL AS contrasena FROM talento WHERE correo = '${email}' AND contrasena = '${password}';`;
-  var sqlCazador = `SELECT *, NULL AS contrasena FROM cazador WHERE correo = '${email}' AND contrasena = '${password}';`;
+  var sqlCazador = `SELECT cazador.nombre, cazador.correo, cazador.lugar, NULL AS contrasena, SUM(estrellasObtenidasCazador)/count(proyecto.nombre) as totalEstrellas, count(proyecto.nombre) as totalProyectos, SUM(contrato.puntosContrato) as totalPuntos FROM contrato, proyecto, cazador WHERE contrato.idProyecto = proyecto.idProyecto AND proyecto.cazador = cazador.idCazador AND contrato.talento = 1 AND correo = "${email}" AND contrasena = "${password}"; `;
   db.query(sqlTalento, function (err, data) {
     if (err) throw err;
     valueTalento = JSON.stringify(data);
