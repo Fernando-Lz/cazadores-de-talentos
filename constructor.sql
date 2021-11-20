@@ -69,6 +69,20 @@ CREATE TABLE contrato(
   PRIMARY KEY (talento, idProyecto)
 );
 
+create TABLE solicitudes(
+  idSolicitud INT NOT NULL AUTO_INCREMENT,
+  talento INT NOT NULL REFERENCES talento(idTalento),
+  cazador INT NOT NULL REFERENCES cazador(idCazador),
+  idProyecto INT NOT NULL REFERENCES proyecto(idProyecto),
+  statusSolicitud VARCHAR(10) NOT NULL DEFAULT 'En proceso',
+  CONSTRAINT statusAceptables CHECK(
+    statusSolicitud = 'En proceso'
+    OR statusSolicitud = 'Denegado'
+    OR statusSolicitud = 'Aceptado'
+  ),
+   KEY (idSolicitud)
+);
+
 CREATE TABLE vacante (
   proyecto INT NOT NULL REFERENCES proyecto(idProyecto),
   talento INT REFERENCES talento(idTalento)
