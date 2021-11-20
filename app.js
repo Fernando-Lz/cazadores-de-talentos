@@ -149,6 +149,19 @@ app.post("/createProject", function (req, res, next) {
   });
 });
 
+app.post("/getAllProjects", function (req, res, next) {
+  const idTalento = req.body.idTalento;
+  const query = `SELECT proyecto.idProyecto, proyecto.nombre AS nombreProyecto, proyecto.tipo, proyecto.descripcion, proyecto.vacantes, cazador.nombre AS nombreCazador, cazador.estrellas FROM proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 AND proyecto.talento != ${idTalento} GROUP BY proyecto.nombre;`;
+  db.query(query, function (err, data) {
+    console.log(data);
+    if (err) {
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify(data));
+    }
+  });
+});
+
 // PORT
 app.listen(PORT, function () {
   console.log(`Server is listening to port ${PORT}`);
