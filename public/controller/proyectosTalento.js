@@ -20,6 +20,8 @@ fetch("/getProjectTalent", {
     console.log(data);
     if (data.status === false) {
       alert("Hubo un error :(, intenta recargar la página");
+    } else if (data.length < 1) {
+      $(".proyecto-actual").append("<h3>No estás en ningún proyecto 😢</h3>");
     } else {
       // Insert projects into the DOM
       if (data.length > 0) {

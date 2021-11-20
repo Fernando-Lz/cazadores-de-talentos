@@ -203,6 +203,47 @@ app.post("/applyProject", function (req, res, next) {
   });
 });
 
+app.post("/getPendingRequests", function (req, res, next) {
+  const idCazador = req.body.idCazador;
+  const query = `SELECT talento.costoHora, talento.nombre, talento.correo, talento.estrellas, solicitudes.idProyecto, solicitudes.talento AS idTalento, proyecto.nombre AS nombreProyecto FROM talento, solicitudes, proyecto WHERE proyecto.idProyecto = solicitudes.idProyecto AND talento.idTalento = solicitudes.talento AND idTalento IN (SELECT talento FROM solicitudes WHERE idProyecto IN (SELECT idProyecto FROM proyecto WHERE cazador = ${idCazador}));`;
+  db.query(query, function (err, data) {
+    if (err) {
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify(data));
+    }
+  });
+});
+
+app.post("/acceptRequest", function (req, res, next) {
+  const idProyecto = req.body.idProyecto;
+  const idTalento = req.body.idTalento;
+  const costoHora = req.body.costoHora;
+  const query = `insert into contrato (talento, idProyecto, horasPago, puntosContrato, estrellasObtenidasTalento, estrellasObtenidasCazador) VALUES (${idTalento}, ${idProyecto}, ${costoHora}, 15, 0, 0);`;
+  db.query(query, function (err, data) {
+    if (err) {
+      console.log(err);
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify({ status: true }));
+    }
+  });
+});
+
+app.post("/denyRequest", function (req, res, next) {
+  const idProyecto = req.body.idProyecto;
+  const idTalento = req.body.idTalento;
+  const query = `DELETE FROM solicitudes WHERE talento = ${idTalento} AND idProyecto = ${idProyecto};`;
+  db.query(query, function (err, data) {
+    if (err) {
+      console.log(err);
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify({ status: true }));
+    }
+  });
+});
+
 // PORT
 app.listen(PORT, function () {
   console.log(`Server is listening to port ${PORT}`);

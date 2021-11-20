@@ -127,7 +127,7 @@ h3 {
   justify-content: space-between;
 }
 
-.botones-solicitud a {
+.botones-solicitud span {
   width: 45%;
   border-radius: 8px;
   padding: 5px;
