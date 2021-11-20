@@ -14,7 +14,7 @@ app.post("/login", function (req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
   var sqlTalento = `SELECT *, NULL AS contrasena FROM talento WHERE correo = '${email}' AND contrasena = '${password}';`;
-  var sqlCazador = `SELECT *, NULL AS contrasena FROM cazador WHERE correo = '${email}' AND contrasena = '${password}';`;
+  var sqlCazador = `SELECT cazador.idCazador, cazador.nombre, cazador.correo, cazador.lugar, cazador.permisos, SUM(cazador.estrellas)/count(proyecto.nombre) as totalEstrellas, count(proyecto.nombre) as totalProyectos, SUM(contrato.puntosContrato) as totalPuntos FROM contrato, proyecto, cazador WHERE contrato.idProyecto = proyecto.idProyecto AND proyecto.cazador = cazador.idCazador AND cazador.correo = '${email}' AND cazador.contrasena = '${password}';`;
   db.query(sqlTalento, function (err, data) {
     if (err) throw err;
     valueTalento = JSON.stringify(data);
@@ -23,9 +23,13 @@ app.post("/login", function (req, res, next) {
       db.query(sqlCazador, function (errCazador, dataCazador) {
         if (errCazador) {
           res.send(JSON.stringify({ status: false }));
+        } else if (dataCazador === "[]") {
+          res.send(JSON.stringify({ status: false }));
+        } else if (dataCazador[0].nombre === dataCazador[0].permisos) {
+          res.send(JSON.stringify({ status: false }));
+        } else {
+          res.send(JSON.stringify(dataCazador));
         }
-        valueCazador = JSON.stringify(dataCazador);
-        res.send(valueCazador);
       });
     } else {
       res.send(valueTalento);
