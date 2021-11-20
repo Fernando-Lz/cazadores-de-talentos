@@ -133,6 +133,18 @@ app.post("/modifyProject", function (req, res, next) {
   });
 });
 
+app.post("/anounceProject", function (req, res, next) {
+  const idProyecto = req.body.idProyecto;
+  const query = `UPDATE proyecto SET anunciado="V"  WHERE idProyecto=${idProyecto};`;
+  db.query(query, function (err, data) {
+    if (err) {
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify({ status: true }));
+    }
+  });
+});
+
 app.post("/createProject", function (req, res, next) {
   const idCazador = req.body.idCazador;
   const tipoProyecto = req.body.tipoProyecto;

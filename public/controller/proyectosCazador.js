@@ -2,7 +2,7 @@
 const projectCard = `<div class="proyecto">
                       <p class="nombre-proyecto"></p>
                       <a class="boton-anunciar">
-                          <img src="../iconos/announcement.svg" alt="Anunciar proyecto">
+                          <img src="../iconos/announcement.svg" alt="Anunciar proyecto" onclick="anounceProject()">
                       </a>
                       <span>
                         <img class="boton-modificar" src="../iconos/edit.svg" alt="Editar proyecto" onclick="javascript:modifyProject(this.parentNode.parentNode, this.id);">
@@ -66,4 +66,40 @@ function modifyProject(proyecto, id) {
   sessionStorage.setItem("numeroVacantes", numeroVacantes);
   sessionStorage.setItem("descripcion", descripcion);
   window.location.href = "../forms/modificarProyecto.html";
+}
+
+function anounceProject() {
+  var id = document.getElementsByClassName("boton-modificar")[0].id;
+  console.log(id);
+  var nivel = Math.floor(sessionStorage.getItem("totalPuntos") / 25);
+  var precio = 100 - (5 * nivel);
+  var selection = confirm(`Pagarás $${precio} para anunciar el proyecto ¿Estás seguro?`);
+  if (selection) {
+    fetch("/anounceProject", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({
+        idProyecto: id,
+      }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.status === false) {
+          alert("Hubo un error :(, inténtelo de nuevo");
+        } else {
+          alert("El proyecto ha sido anunciado correctamente");
+        }
+      })
+      .catch((e) => {
+        alert(e);
+      });
+  }
+}
+
+function confirmAnouncement(precioFinal) {
+  
 }
