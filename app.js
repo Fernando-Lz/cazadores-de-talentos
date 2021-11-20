@@ -93,6 +93,19 @@ app.get("/getProjects", function (req, res, next) {
   });
 });
 
+app.post("/getActiveProject", function (req, res, next) {
+  const idTalento = req.body.idTalento;
+  const query = `SELECT proyecto.nombre FROM proyecto WHERE proyecto.talento = ${idTalento} GROUP BY proyecto.nombre;`;
+  db.query(query, function (err, data) {
+    proyectoList = JSON.stringify(data);
+    if (proyectoList === "[]") {
+      res.send(JSON.stringify({ activeProject: false }));
+    } else {
+      res.send(JSON.stringify({ activeProject: true }));
+    }
+  });
+});
+
 app.post("/getProjectsCazador", function (req, res, next) {
   const idCazador = req.body.idCazador;
   const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo, proyecto.vacantes, proyecto.idProyecto FROM contrato, proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.cazador = ${idCazador} group by nombre;`;
