@@ -11,12 +11,15 @@ app.get("/", function (request, response) {
 
 // DB ROUTES AND QUERIES
 app.post("/login", function (req, res, next) {
+  console.log(req.body);
   const email = req.body.email;
   const password = req.body.password;
-  var sqlTalento = `SELECT *, NULL AS contrasena FROM talento WHERE correo = '${email}' AND contrasena = '${password}';`;
-  var sqlCazador = `SELECT cazador.nombre, cazador.correo, cazador.lugar, NULL AS contrasena, SUM(estrellasObtenidasCazador)/count(proyecto.nombre) as totalEstrellas, count(proyecto.nombre) as totalProyectos, SUM(contrato.puntosContrato) as totalPuntos FROM contrato, proyecto, cazador WHERE contrato.idProyecto = proyecto.idProyecto AND proyecto.cazador = cazador.idCazador AND contrato.talento = 1 AND correo = "${email}" AND contrasena = "${password}"; `;
+  var sqlTalento = `SELECT *, NULL AS contrasena, estrellas as totalEstrellas FROM talento WHERE correo = '${email}' AND contrasena = '${password}';`;
+  var sqlCazador = `SELECT cazador.nombre, cazador.correo, cazador.lugar, cazador.permisos, NULL AS contrasena, SUM(estrellasObtenidasCazador)/count(proyecto.nombre) as totalEstrellas, count(proyecto.nombre) as totalProyectos, SUM(contrato.puntosContrato) as totalPuntos FROM contrato, proyecto, cazador WHERE contrato.idProyecto = proyecto.idProyecto AND proyecto.cazador = cazador.idCazador AND contrato.talento = 1 AND cazador.correo = '${email}' AND cazador.contrasena = '${password}';`;
   db.query(sqlTalento, function (err, data) {
-    if (err) throw err;
+    if (err) {
+      res.send(JSON.stringify({ status: false }));
+    }
     valueTalento = JSON.stringify(data);
     // If talento does not exists, look for cazador
     if (valueTalento === "[]") {
@@ -24,8 +27,17 @@ app.post("/login", function (req, res, next) {
         if (errCazador) {
           res.send(JSON.stringify({ status: false }));
         }
-        valueCazador = JSON.stringify(dataCazador);
-        res.send(valueCazador);
+        //valueCazador = JSON.stringify(dataCazador);
+        console.log(dataCazador);
+        if (dataCazador === "[]") {
+          console.log(1);
+        }
+        if (dataCazador.nombre == dataCazador.permisos) {
+          console.log(dataCazador.nombre, dataCazador.permisos);
+        } else {
+          res.send(JSON.stringify({ status: false }));
+          res.send(dataCazador);
+        }
       });
     } else {
       res.send(valueTalento);
@@ -107,6 +119,22 @@ app.post("/modifyProject", function (req, res, next) {
   const numeroVacantes = req.body.numeroVacantes;
   const descripcion = req.body.descripcion;
   const query = `UPDATE proyecto SET tipo="${tipoProyecto}", nombre = "${nombreProyecto}", vacantes = ${numeroVacantes}, descripcion = "${descripcion}" 
+  WHERE idProyecto = ${idProyecto};`;
+  db.query(query, function (err, data) {
+    if (err) {
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify({ status: true }));
+    }
+  });
+});
+
+app.post("/createProject", function (req, res, next) {
+  const tipoProyecto = req.body.tipoProyecto;
+  const nombreProyecto = req.body.nombreProyecto;
+  const numeroVacantes = req.body.numeroVacantes;
+  const descripcion = req.body.descripcion;
+  const query = `INSERT INTO proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (10, "${nombreProyecto}", "${tipoProyecto}", ${numeroVacantes}, "${descripcion}");" 
   WHERE idProyecto = ${idProyecto};`;
   db.query(query, function (err, data) {
     if (err) {

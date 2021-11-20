@@ -35,7 +35,7 @@ CREATE TABLE cazador(
 CREATE TABLE proyecto(
   idProyecto INT NOT NULL AUTO_INCREMENT,
   cazador INT NOT NULL REFERENCES cazador(idCazador),
-  talento INT NOT NULL REFERENCES talento(idTalento),
+  talento INT REFERENCES talento(idTalento),
   nombre VARCHAR(100) NOT NULL,
   tipo VARCHAR(25) NOT NULL,
   vacantes INT NOT NULL,
