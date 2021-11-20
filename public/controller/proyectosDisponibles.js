@@ -24,7 +24,6 @@ window.addEventListener("load", function () {
         $(".container-carta").append(
           "<div class='tarjeta'><p style='text-align:center;' class='nombre-proyecto'>No hay más proyectos disponibles</p></div>"
         );
-        alert("Se acabaron los proyectos!\nIntenta más tarde 😃");
       } else {
         // Insert projects into the DOM
         for (let i = 0; i < data.length; i++) {

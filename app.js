@@ -93,6 +93,7 @@ app.get("/getProjects", function (req, res, next) {
   });
 });
 
+// Returns true or false, depending if the talent is involved in a project
 app.post("/getActiveProject", function (req, res, next) {
   const idTalento = req.body.idTalento;
   const query = `SELECT proyecto.nombre FROM proyecto WHERE proyecto.talento = ${idTalento} GROUP BY proyecto.nombre;`;
@@ -118,6 +119,7 @@ app.post("/getProjectsCazador", function (req, res, next) {
   });
 });
 
+// Return the current project that the talent is involved
 app.post("/getProjectTalent", function (req, res, next) {
   const idTalento = req.body.idTalento;
   const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo FROM proyecto WHERE proyecto.talento = ${idTalento};`;
