@@ -22,23 +22,24 @@ insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Dani
 insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Gerardo", "ai.systems@hotmail.com", "123odioloslunes456", "Oaxaca", 3);
 
 
-insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (1, 10, "Tienda de Pasteleria Pepita", "Desarrollo Web", 5, "Creacion de una tienda en linea.");
-insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (2, 4, "Nueva App - Trelawny", "Desarrollo Móvil", 2, "Creacion de una app de telefono.");
-insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (3, 1, "Nueva App -  Mark-it", "Desarrollo Móvil", 2, "Creacion de una app para el telefono");
-insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (4, 5, "Bases de Datos de Protea", "Bases de Datos", 1, "Creacion de un SGBD MySQL.");
-insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (5, 2, "Netscout - Trabajo temporal", "Seguridad Informática", 2, "Se busca un experto en AES.");
-insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (6, 8, "Neopets - Nuevo Inicio", "Desarrollo Web", 1, "Creacion de una página web.");
-insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (7, 7, "Garuda - Pagina Web", "Desarrollo Web", 1, "Creacion de una página web.");
-insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (8, 3, "Count-it - Estudio de aglomeraciones", "Ciencia de Datos", 1, "Creación de un sistema para conteo de aglomeraciones.");
-insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (9, 6, "iText - Desarrollo iOS", "Desarrollo Móvil", 1, "Mantenimiento de una aplicacion movil iOS.");
-insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (10, 9, "MarianaDB - Rediseno de Bases de datos", "Bases de Datos", 3, "Rediseno de una Bases de datos centralizada.");
+insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (1, "Tienda de Pasteleria Pepita", "Desarrollo Web", 5, "Creacion de una tienda en linea.");
+insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (2, "Nueva App - Trelawny", "Desarrollo Móvil", 2, "Creacion de una app de telefono.");
+insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (3, "Nueva App -  Mark-it", "Desarrollo Móvil", 2, "Creacion de una app para el telefono");
+insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (4, "Bases de Datos de Protea", "Bases de Datos", 1, "Creacion de un SGBD MySQL.");
+insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (5, "Netscout - Trabajo temporal", "Seguridad Informática", 2, "Se busca un experto en AES.");
+insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (6, "Neopets - Nuevo Inicio", "Desarrollo Web", 1, "Creacion de una página web.");
+insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (7, "Garuda - Pagina Web", "Desarrollo Web", 1, "Creacion de una página web.");
+insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (8, "Count-it - Estudio de aglomeraciones", "Ciencia de Datos", 1, "Creación de un sistema para conteo de aglomeraciones.");
+insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (9, "iText - Desarrollo iOS", "Desarrollo Móvil", 1, "Mantenimiento de una aplicacion movil iOS.");
+insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (10, "MarianaDB - Rediseno de Bases de datos", "Bases de Datos", 3, "Rediseno de una Bases de datos centralizada.");
+insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (11, "BlueBoard", "Seguridad Informática", 4, "Seguridad necesaria para plataforma BlueBoard.");
 
-
+insert into solicitudes (talento, cazador, idProyecto) VALUES (2, 1, 1);
+insert into solicitudes (talento, cazador, idProyecto) VALUES (10, 1, 1);
+insert into solicitudes (talento, cazador, idProyecto) VALUES (4, 1, 11);
 
 insert into contrato (talento, idProyecto, horasPago, puntosContrato, estrellasObtenidasTalento, estrellasObtenidasCazador, statusContrato) VALUES (1, 1, 26, 12, 5, 4, "Terminado");
 insert into contrato (talento, idProyecto, horasPago, puntosContrato, estrellasObtenidasTalento, estrellasObtenidasCazador) VALUES (9, 1, 26, 12, 3, 5);
-insert into contrato (talento, idProyecto, horasPago, puntosContrato, estrellasObtenidasTalento, estrellasObtenidasCazador) VALUES (2, 1, 26, 12, 4, 5);
-insert into contrato (talento, idProyecto, horasPago, puntosContrato, estrellasObtenidasTalento, estrellasObtenidasCazador) VALUES (10, 1, 20, 3, 3, 4);
 insert into contrato (talento, idProyecto, horasPago, puntosContrato, estrellasObtenidasTalento, estrellasObtenidasCazador, statusContrato) VALUES (4, 2, 25, 10, 3, 5, "Terminado");
 insert into contrato (talento, idProyecto, horasPago, puntosContrato, estrellasObtenidasTalento, estrellasObtenidasCazador, statusContrato) VALUES (4, 3, 25, 10, 5, 5, "Terminado");
 insert into contrato (talento, idProyecto, horasPago, puntosContrato, estrellasObtenidasTalento, estrellasObtenidasCazador) VALUES (4, 5, 25, 10, 4, 5);
@@ -74,3 +75,4 @@ insert into vacante (proyecto, talento) VALUES (9, 6);
 insert into vacante (proyecto, talento) VALUES (10, 9);
 insert into vacante (proyecto, talento) VALUES (10, 3);
 insert into vacante (proyecto, talento) VALUES (10, 5);
+insert into vacante (proyecto, talento) VALUES (11, 4);

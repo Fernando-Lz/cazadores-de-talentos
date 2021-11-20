@@ -93,9 +93,10 @@ app.get("/getProjects", function (req, res, next) {
   });
 });
 
+// Returns true or false, depending if the talent is involved in a project
 app.post("/getActiveProject", function (req, res, next) {
   const idTalento = req.body.idTalento;
-  const query = `SELECT proyecto.nombre FROM proyecto WHERE proyecto.talento = ${idTalento} GROUP BY proyecto.nombre;`;
+  const query = `SELECT idProyecto FROM contrato WHERE talento = ${idTalento} AND statusContrato = "En Proceso";`;
   db.query(query, function (err, data) {
     proyectoList = JSON.stringify(data);
     if (proyectoList === "[]") {
@@ -132,9 +133,10 @@ app.post("/getProjectsCazador", function (req, res, next) {
   });
 });
 
+// Return the current project that the talent is involved
 app.post("/getProjectTalent", function (req, res, next) {
   const idTalento = req.body.idTalento;
-  const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo FROM proyecto WHERE proyecto.talento = ${idTalento};`;
+  const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo FROM proyecto WHERE proyecto.idProyecto = (SELECT idProyecto FROM contrato WHERE talento = ${idTalento} and statusContrato = "En proceso");`;
   db.query(query, function (err, data) {
     if (err) {
       res.send(JSON.stringify({ status: false }));
@@ -191,17 +193,8 @@ app.post("/createProject", function (req, res, next) {
 
 app.post("/getAllProjects", function (req, res, next) {
   const idTalento = req.body.idTalento;
-  const query = `SELECT a.idProyecto, a.nombreProyecto, a.tipo, a.descripcion, a.vacantes, a.nombreCazador, a.estrellas FROM 
-  (
-    SELECT proyecto.idProyecto, proyecto.nombre AS nombreProyecto, proyecto.tipo, proyecto.descripcion, proyecto.vacantes, cazador.nombre AS nombreCazador, cazador.estrellas FROM proyecto, cazador
-    WHERE proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 AND proyecto.talento != ${idTalento}
-  ) a
-  LEFT JOIN (
-    SELECT proyecto.idProyecto, proyecto.nombre AS nombreProyecto, proyecto.tipo, proyecto.descripcion, proyecto.vacantes, cazador.nombre AS nombreCazador, cazador.estrellas FROM solicitudes, proyecto, cazador 
-    WHERE proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 AND proyecto.talento != ${idTalento} AND proyecto.idProyecto = solicitudes.idProyecto
-  ) b
-  ON a.idProyecto = b.idProyecto
-  WHERE b.idProyecto IS NULL;`;
+  const query = `SELECT DISTINCT proyecto.idProyecto, proyecto.nombre AS nombreProyecto, proyecto.tipo, proyecto.descripcion, proyecto.vacantes, cazador.nombre AS nombreCazador, cazador.estrellas FROM vacante, proyecto, cazador
+  WHERE proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 AND vacante.proyecto = proyecto.idProyecto AND proyecto.idProyecto NOT IN (SELECT vacante.proyecto FROM vacante WHERE vacante.talento = ${idTalento}) AND proyecto.idProyecto NOT IN (SELECT idProyecto FROM solicitudes WHERE talento = ${idTalento});`;
   db.query(query, function (err, data) {
     if (err) {
       res.send(JSON.stringify({ status: false }));
@@ -217,6 +210,47 @@ app.post("/applyProject", function (req, res, next) {
   const query = `INSERT INTO solicitudes (talento, cazador, idProyecto) SELECT ${idTalento}, cazador.idCazador, ${idProyecto} FROM proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.idProyecto = ${idProyecto};`;
   db.query(query, function (err, data) {
     if (err) {
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify({ status: true }));
+    }
+  });
+});
+
+app.post("/getPendingRequests", function (req, res, next) {
+  const idCazador = req.body.idCazador;
+  const query = `SELECT talento.costoHora, talento.nombre, talento.correo, talento.estrellas, solicitudes.idProyecto, solicitudes.talento AS idTalento, proyecto.nombre AS nombreProyecto FROM talento, solicitudes, proyecto WHERE proyecto.idProyecto = solicitudes.idProyecto AND talento.idTalento = solicitudes.talento AND idTalento IN (SELECT talento FROM solicitudes WHERE idProyecto IN (SELECT idProyecto FROM proyecto WHERE cazador = ${idCazador}));`;
+  db.query(query, function (err, data) {
+    if (err) {
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify(data));
+    }
+  });
+});
+
+app.post("/acceptRequest", function (req, res, next) {
+  const idProyecto = req.body.idProyecto;
+  const idTalento = req.body.idTalento;
+  const costoHora = req.body.costoHora;
+  const query = `insert into contrato (talento, idProyecto, horasPago, puntosContrato, estrellasObtenidasTalento, estrellasObtenidasCazador) VALUES (${idTalento}, ${idProyecto}, ${costoHora}, 15, 0, 0);`;
+  db.query(query, function (err, data) {
+    if (err) {
+      console.log(err);
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify({ status: true }));
+    }
+  });
+});
+
+app.post("/denyRequest", function (req, res, next) {
+  const idProyecto = req.body.idProyecto;
+  const idTalento = req.body.idTalento;
+  const query = `DELETE FROM solicitudes WHERE talento = ${idTalento} AND idProyecto = ${idProyecto};`;
+  db.query(query, function (err, data) {
+    if (err) {
+      console.log(err);
       res.send(JSON.stringify({ status: false }));
     } else {
       res.send(JSON.stringify({ status: true }));
