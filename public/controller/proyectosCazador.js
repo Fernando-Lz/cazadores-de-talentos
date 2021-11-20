@@ -29,9 +29,13 @@ fetch("/getProjectsCazador", {
     if (data.status === false) {
       alert("Hubo un error :(, intenta recargar la página");
     } else {
+      console.log(data);
       // Insert projects into the DOM
       for (let i = 0; i < data.length; i++) {
         $(".proyectos-publicados").append(projectCard);
+        if (data[i].anunciado === "V") {
+          $(".boton-anunciar").remove();
+        }
         document.getElementsByClassName("nombre-proyecto")[i].innerHTML =
           data[i].nombre;
         document.getElementsByClassName("tipo-proyecto")[i].innerHTML =
@@ -72,8 +76,10 @@ function anounceProject() {
   var id = document.getElementsByClassName("boton-modificar")[0].id;
   console.log(id);
   var nivel = Math.floor(sessionStorage.getItem("totalPuntos") / 25);
-  var precio = 100 - (5 * nivel);
-  var selection = confirm(`Pagarás $${precio} para anunciar el proyecto ¿Estás seguro?`);
+  var precio = 100 - 5 * nivel;
+  var selection = confirm(
+    `Pagarás $${precio} para anunciar el proyecto ¿Estás seguro?`
+  );
   if (selection) {
     fetch("/anounceProject", {
       method: "POST",
@@ -92,6 +98,7 @@ function anounceProject() {
           alert("Hubo un error :(, inténtelo de nuevo");
         } else {
           alert("El proyecto ha sido anunciado correctamente");
+          location.reload();
         }
       })
       .catch((e) => {
@@ -100,6 +107,4 @@ function anounceProject() {
   }
 }
 
-function confirmAnouncement(precioFinal) {
-  
-}
+function confirmAnouncement(precioFinal) {}

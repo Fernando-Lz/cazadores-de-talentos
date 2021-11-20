@@ -108,7 +108,7 @@ app.post("/getActiveProject", function (req, res, next) {
 
 app.post("/getProjectsCazador", function (req, res, next) {
   const idCazador = req.body.idCazador;
-  const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo, proyecto.vacantes, proyecto.idProyecto FROM contrato, proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.cazador = ${idCazador} group by nombre;`;
+  const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo, proyecto.vacantes, proyecto.idProyecto, proyecto.anunciado FROM contrato, proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.cazador = ${idCazador} group by nombre;`;
   db.query(query, function (err, data) {
     if (err) {
       res.send(JSON.stringify({ status: false }));
