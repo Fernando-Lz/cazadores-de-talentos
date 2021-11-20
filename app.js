@@ -82,7 +82,7 @@ app.post("/modifyProfile", function (req, res, next) {
 });
 
 app.get("/getProjects", function (req, res, next) {
-  const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo, proyecto.vacantes FROM contrato, proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 group by nombre;`;
+  const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo, proyecto.vacantes FROM contrato, proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.vacantes > 0 AND proyecto.anunciado = "V" group by nombre;`;
   db.query(query, function (err, data) {
     if (err) {
       res.send(JSON.stringify({ status: false }));
