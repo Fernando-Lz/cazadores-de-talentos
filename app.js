@@ -161,6 +161,19 @@ app.post("/getAllProjects", function (req, res, next) {
   });
 });
 
+app.post("/getActiveProject", function (req, res, next) {
+  const idTalento = req.body.idTalento;
+  const query = `SELECT proyecto.nombre FROM proyecto WHERE proyecto.talento = ${idTalento} GROUP BY proyecto.nombre;`;
+  db.query(query, function (err, data) {
+    proyectoList = JSON.stringify(data);
+    if (proyectoList === "[]") {
+      res.send(JSON.stringify({ activeProject: false }));
+    } else {
+      res.send(JSON.stringify({ activeProject: true }));
+    }
+  });
+});
+
 // PORT
 app.listen(PORT, function () {
   console.log(`Server is listening to port ${PORT}`);

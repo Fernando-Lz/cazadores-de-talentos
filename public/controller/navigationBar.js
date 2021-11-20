@@ -10,6 +10,29 @@ window.addEventListener("load", function () {
   }
 });
 
+fetch("/getActiveProject", {
+  method: "POST",
+  headers: {
+      "Content-type": "application/json; charset=UTF-8",
+  },
+  body: JSON.stringify({
+      idTalento: sessionStorage.getItem("idTalento"),
+  }),
+})
+.then((res) => {
+  return res.json();
+})
+.then((data) => {
+  if (data.activeProject === true) {
+    $(".speed-hunt").hide();
+  } else {
+    $(".speed-hunt").show();
+  }
+})
+.catch((e) => {
+  alert(e);
+});
+
 const logoutSession = () => {
   sessionStorage.clear();
 };
