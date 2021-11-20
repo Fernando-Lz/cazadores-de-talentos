@@ -10,16 +10,16 @@ insert into talento (nombre, correo, contrasena, capacidades, actividadProfesion
 insert into talento (nombre, correo, contrasena, capacidades, actividadProfesional, lugar, costoHora, disponibilidadHoraInicio, disponibilidadHoraFin) VALUES ("Hector", "hct.1990@gmail.com", "optimusprime6598", "Programador de Sistemas Embebidos, HTML, CSS", "Volkswagen", "CDMX", 27, 12, 19);
 insert into talento (nombre, correo, contrasena, capacidades, actividadProfesional, lugar, costoHora, disponibilidadHoraInicio, disponibilidadHoraFin) VALUES ("Gustavo", "grua.1234@outlook.com", "core12.87@f", "Bases de Datos, Git, Ruby on Rails", "Freelance", "Baja California", 22, 12, 24);
 
-insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Pedro", "pedro.solamx@gmail.com", "trineo1241", "Puebla");
-insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Martha", "m.gerides@outlook.com", "@contrasena12", "Quintana Roo");
-insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Rosalinda", "343.Industries@gmail.com", "ht.3456GR", "Jalisco");
-insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Adrian", "hergz.adrian@gporres.mx", "p12A98tw", "CDMX");
-insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Mariano", "marpol@next.com.mx", "alejos.9809", "Puebla");
-insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Ruben", "retcon0569@outlook.com", "talmfdAW3012", "Nuevo Leon");
-insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Mariana", "jquery@gmail.com", "hielaC0R346", "CDMX");
-insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Gabriela", "freelancecompany@gmail.com", ".aT5e2Fg", "Veracruz");
-insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Daniela", "seguridadTovar@gmail.com", "python09856", "Tlaxcala");
-insert into cazador (nombre, correo, contrasena, lugar) VALUES ("Gerardo", "ai.systems@hotmail.com", "123odioloslunes456", "Oaxaca");
+insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Pedro", "pedro.solamx@gmail.com", "trineo1241", "Puebla", 4);
+insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Martha", "m.gerides@outlook.com", "@contrasena12", "Quintana Roo", 5);
+insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Rosalinda", "343.Industries@gmail.com", "ht.3456GR", "Jalisco", 3);
+insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Adrian", "hergz.adrian@gporres.mx", "p12A98tw", "CDMX", 5);
+insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Mariano", "marpol@next.com.mx", "alejos.9809", "Puebla", 4);
+insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Ruben", "retcon0569@outlook.com", "talmfdAW3012", "Nuevo Leon", 4);
+insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Mariana", "jquery@gmail.com", "hielaC0R346", "CDMX", 1);
+insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Gabriela", "freelancecompany@gmail.com", ".aT5e2Fg", "Veracruz", 5);
+insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Daniela", "seguridadTovar@gmail.com", "python09856", "Tlaxcala", 2);
+insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Gerardo", "ai.systems@hotmail.com", "123odioloslunes456", "Oaxaca", 3);
 
 
 insert into proyecto (cazador, talento, nombre, tipo, vacantes, descripcion) VALUES (1, 10, "Tienda de Pasteleria Pepita", "Desarrollo Web", 5, "Creacion de una tienda en linea.");
