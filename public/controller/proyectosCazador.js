@@ -29,7 +29,6 @@ fetch("/getProjectsCazador", {
     if (data.status === false) {
       alert("Hubo un error :(, intenta recargar la página");
     } else {
-      console.log(data);
       // Insert projects into the DOM
       for (let i = 0; i < data.length; i++) {
         $(".proyectos-publicados").append(projectCard);
@@ -107,4 +106,30 @@ function anounceProject() {
   }
 }
 
-function confirmAnouncement(precioFinal) {}
+fetch("/getCompletedContratos", {
+  method: "POST",
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+  },
+  body: JSON.stringify({
+    idCazador: sessionStorage.getItem("idCazador"),
+  }),
+})
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    if (data.activeProject === false) {
+      console.log("Error");
+    } else {
+      sessionStorage.setItem("contratoName", data[0].nombre);
+      sessionStorage.setItem("contratoTalento", data[0].talento);
+      sessionStorage.setItem("contratoTipo", "cazador");
+      if(confirm("Tienes un contrato listo para calificar, quieres checarlo?")){
+        window.location.href = "../forms/evaluarTalento.html";
+      }
+    } 
+  })
+  .catch((e) => {
+    alert(e);
+  });

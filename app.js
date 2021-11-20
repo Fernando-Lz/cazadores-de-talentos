@@ -106,6 +106,20 @@ app.post("/getActiveProject", function (req, res, next) {
   });
 });
 
+app.post("/getCompletedContratos", function (req, res, next) {
+  const idCazador = req.body.idCazador;
+  const idTalento = req.body.idTalento;
+  const query = `SELECT proyecto.nombre, cazador.nombre AS cazador, talento.nombre AS talento FROM proyecto, contrato, talento, cazador WHERE (proyecto.cazador = '${idCazador}' OR proyecto.talento = '${idTalento}') AND (proyecto.cazador = cazador.idCazador OR proyecto.talento = talento.idTalento) AND proyecto.idProyecto = contrato.idProyecto AND contrato.statusContrato = "Terminado" GROUP BY proyecto.nombre;`;
+  db.query(query, function (err, data) {
+    proyectoList = JSON.stringify(data);
+    if (proyectoList === "[]") {
+      res.send(JSON.stringify({ activeProject: false }));
+    } else {
+      res.send(JSON.stringify(data));
+    }
+  });
+});
+
 app.post("/getProjectsCazador", function (req, res, next) {
   const idCazador = req.body.idCazador;
   const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo, proyecto.vacantes, proyecto.idProyecto, proyecto.anunciado FROM contrato, proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.cazador = ${idCazador} group by nombre;`;
