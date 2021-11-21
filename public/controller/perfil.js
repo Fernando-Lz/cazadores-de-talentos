@@ -1,7 +1,7 @@
 // Set common attributes
 document.getElementById("nombre").innerHTML = sessionStorage.getItem("nombre");
-document.getElementById("reputacion").innerHTML =
-  sessionStorage.getItem("totalEstrellas");
+/*document.getElementById("reputacion").innerHTML =
+  sessionStorage.getItem("totalEstrellas");*/
 document.getElementById("lugar").innerHTML = sessionStorage.getItem("lugar");
 // Set talento card values
 if (sessionStorage.getItem("permisos") === "talento") {
@@ -32,8 +32,8 @@ if (sessionStorage.getItem("permisos") === "talento") {
 }
 // Set cazador card values
 else {
-  document.getElementById("proyectos-publicados").innerHTML =
-    sessionStorage.getItem("totalProyectos");
+  // document.getElementById("proyectos-publicados").innerHTML =
+  //   sessionStorage.getItem("totalProyectos");
   document.getElementById("puntos").innerHTML =
     sessionStorage.getItem("totalPuntos");
   let nivel = Math.floor(sessionStorage.getItem("totalPuntos") / 25);

@@ -49,7 +49,7 @@ function signUp() {
       password: password,
       lugar: lugar,
       rol: rol,
-      capacidade: capacidades,
+      capacidades: capacidades,
       actividadProfesional: actividadProfesional,
       costo: costo,
       horarioInicio: horarioInicio,
