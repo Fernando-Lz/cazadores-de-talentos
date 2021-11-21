@@ -21,7 +21,6 @@ insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Gabr
 insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Daniela", "seguridadTovar@gmail.com", "python09856", "Tlaxcala", 2);
 insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Gerardo", "ai.systems@hotmail.com", "123odioloslunes456", "Oaxaca", 3);
 
-
 insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (1, "Tienda de Pasteleria Pepita", "Desarrollo Web", 5, "Creacion de una tienda en linea.");
 insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (2, "Nueva App - Trelawny", "Desarrollo Móvil", 2, "Creacion de una app de telefono.");
 insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (3, "Nueva App -  Mark-it", "Desarrollo Móvil", 2, "Creacion de una app para el telefono");
@@ -62,8 +61,6 @@ insert into contrato (talento, idProyecto, horasPago, puntosContrato, estrellasO
 
 insert into vacante (proyecto, talento) VALUES (1, 1);
 insert into vacante (proyecto, talento) VALUES (1, 9);
-insert into vacante (proyecto, talento) VALUES (1, null);
-insert into vacante (proyecto, talento) VALUES (1, null);
 insert into vacante (proyecto, talento) VALUES (1, 5);
 insert into vacante (proyecto, talento) VALUES (2, 4);
 insert into vacante (proyecto, talento) VALUES (2, 5);
@@ -73,13 +70,8 @@ insert into vacante (proyecto, talento) VALUES (4, 5);
 insert into vacante (proyecto, talento) VALUES (5, 4);
 insert into vacante (proyecto, talento) VALUES (5, 2);
 insert into vacante (proyecto, talento) VALUES (6, 8);
-insert into vacante (proyecto, talento) VALUES (7, null);
 insert into vacante (proyecto, talento) VALUES (8, 3);
 insert into vacante (proyecto, talento) VALUES (9, 6);
 insert into vacante (proyecto, talento) VALUES (10, 9);
 insert into vacante (proyecto, talento) VALUES (10, 3);
 insert into vacante (proyecto, talento) VALUES (10, 5);
-insert into vacante (proyecto, talento) VALUES (11, null);
-insert into vacante (proyecto, talento) VALUES (11, null);
-insert into vacante (proyecto, talento) VALUES (11, null);
-insert into vacante (proyecto, talento) VALUES (11, null);
