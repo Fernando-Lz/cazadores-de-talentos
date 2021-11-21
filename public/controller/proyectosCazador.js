@@ -165,7 +165,7 @@ function anounceProject() {
   }
 }
 
-fetch("/getCompletedContratos", {
+/*fetch("/getCompletedContratos", {
   method: "POST",
   headers: {
     "Content-type": "application/json; charset=UTF-8",
@@ -183,14 +183,17 @@ fetch("/getCompletedContratos", {
       sessionStorage.setItem("contratoName", data[0].nombre);
       sessionStorage.setItem("contratoTalento", data[0].talento);
       sessionStorage.setItem("contratoTipo", "cazador");
-      if(confirm("Tienes un contrato listo para calificar, quieres checarlo?")){
+      if (
+        confirm("Tienes un contrato listo para calificar, quieres checarlo?")
+      ) {
         window.location.href = "../forms/evaluarTalento.html";
       }
-    } 
+    }
   })
   .catch((e) => {
     alert(e);
-  });
+  });*/
+
 function acceptRequest(requestCard) {
   const idTalento = requestCard.getElementsByClassName(
     "id-talento-solicitud"
