@@ -250,7 +250,6 @@ app.post("/denyRequest", function (req, res, next) {
   const query = `DELETE FROM solicitudes WHERE talento = ${idTalento} AND idProyecto = ${idProyecto};`;
   db.query(query, function (err, data) {
     if (err) {
-      console.log(err);
       res.send(JSON.stringify({ status: false }));
     } else {
       res.send(JSON.stringify({ status: true }));
@@ -263,7 +262,6 @@ app.post("/updateStars", function (req, res, next) {
   const nameUser = req.body.nameUser;
   const estrellas = req.body.estrellas;
   var sqlUpdateTalento = `UPDATE ${userType} SET estrellas='${estrellas}' WHERE ${userType}.nombre="${nameUser}";`;
-  console.log(sqlUpdateTalento);
   db.query(sqlUpdateTalento, function (err, data) {
     if (err) {
       console.log(err);
