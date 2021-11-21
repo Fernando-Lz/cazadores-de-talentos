@@ -19,13 +19,61 @@ window.addEventListener("load", function () {
 });
 
 let nameUser = "";
-let typeUser = ""
+let typeUser = "";
+let idProject = 0;
+let upperCaseType = "";
 if (tipo === "cazador"){ 
     nameUser = nombreTalento;
     typeUser = "talento";
+    upperCaseType = "Talento";
+    fetch("/getProjectsCazador", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({
+        idCazador: sessionStorage.getItem("idCazador"),
+      }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.status === false) {
+          alert("Error al encontrar el proyecto");
+        } else {
+          idProject = data[0].idProyecto;
+        }
+      })
+      .catch((e) => {
+        alert(e);
+      });
 } else if (tipo === "talento") {
     nameUser = nombreCazador;
     typeUser = "cazador";
+    upperCaseType = "Cazador";
+    fetch("/getProjectTalent", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({
+        idTalento: sessionStorage.getItem("idTalento"),
+      }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.status === false) {
+          alert("Error al encontrar el proyecto");
+        } else {
+          idProject = data[0].idProyecto;
+        }
+      })
+      .catch((e) => {
+        alert(e);
+      });
 }
 
 function submitEvaluation() {
@@ -38,8 +86,10 @@ function submitEvaluation() {
         },
         body: JSON.stringify({
           userType: typeUser,
+          upperCaseType: upperCaseType,
           nameUser: nameUser,
           estrellas: stars,
+          idProject: idProject,
         }),
       })
         .then((res) => {

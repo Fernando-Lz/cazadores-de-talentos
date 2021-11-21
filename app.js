@@ -110,7 +110,7 @@ app.post("/getActiveProject", function (req, res, next) {
 app.post("/getCompletedContratos", function (req, res, next) {
   const idCazador = req.body.idCazador;
   const idTalento = req.body.idTalento;
-  const query = `SELECT proyecto.nombre, cazador.nombre AS cazador, talento.nombre AS talento FROM proyecto, contrato, talento, cazador WHERE (proyecto.cazador = '${idCazador}' OR proyecto.talento = '${idTalento}') AND (proyecto.cazador = cazador.idCazador OR proyecto.talento = talento.idTalento) AND proyecto.idProyecto = contrato.idProyecto AND contrato.statusContrato = "Terminado" GROUP BY proyecto.nombre;`;
+  const query = `SELECT proyecto.nombre, cazador.nombre AS cazador, talento.nombre AS talento, contrato.estrellasObtenidasCazador, contrato.estrellasObtenidasTalento FROM proyecto, contrato, talento, cazador WHERE (proyecto.cazador = '${idCazador}' OR proyecto.talento = '${idTalento}') AND (proyecto.cazador = cazador.idCazador OR proyecto.talento = talento.idTalento) AND proyecto.idProyecto = contrato.idProyecto AND contrato.statusContrato = "Terminado" GROUP BY proyecto.nombre;`;
   db.query(query, function (err, data) {
     proyectoList = JSON.stringify(data);
     if (proyectoList === "[]") {
@@ -258,14 +258,25 @@ app.post("/denyRequest", function (req, res, next) {
 
 app.post("/updateStars", function (req, res, next) {
   const userType = req.body.userType;
+  const upperCaseType = req.body.upperCaseType;
   const nameUser = req.body.nameUser;
   const estrellas = req.body.estrellas;
+  const idProject = req.body.idProject;
   var sqlUpdateTalento = `UPDATE ${userType} SET estrellas='${estrellas}' WHERE ${userType}.nombre="${nameUser}";`;
+  console.log(sqlUpdateTalento);
   db.query(sqlUpdateTalento, function (err, data) {
     if (err) {
       res.send(JSON.stringify({ status: false }));
     } else {
-      res.send(JSON.stringify({ status: true }));
+      var sqlUpdateContrato = `UPDATE contrato SET contrato.estrellasObtenidas${upperCaseType}='${estrellas}' WHERE contrato.idProyecto='${idProject}';`;
+      console.log(sqlUpdateContrato);
+      db.query(sqlUpdateContrato, function (err, data) {
+        if (err) {
+          res.send(JSON.stringify({ status: false }));
+        } else {
+          res.send(JSON.stringify({ status: true }));
+        }
+      });
     }
   });
 });

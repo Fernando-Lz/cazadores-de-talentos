@@ -55,11 +55,13 @@ fetch("/getProjectTalent", {
       if (data.activeProject === false) {
         console.log("Error");
       } else {
-        sessionStorage.setItem("contratoName", data[0].nombre);
-        sessionStorage.setItem("contratoCazador", data[0].cazador);
-        sessionStorage.setItem("contratoTipo", "talento");
-        if(confirm("Tienes un contrato listo para calificar, quieres checarlo?")){
-          window.location.href = "../forms/evaluarCazador.html";
+        if (data[0].estrellasObtenidasTalento == 0 || data[0].estrellasObtenidasCazador == 0) {
+          sessionStorage.setItem("contratoName", data[0].nombre);
+          sessionStorage.setItem("contratoCazador", data[0].cazador);
+          sessionStorage.setItem("contratoTipo", "talento");
+          if(confirm("Tienes un contrato listo para calificar, quieres checarlo?")){
+            window.location.href = "../forms/evaluarCazador.html";
+          }
         }
       } 
     })
