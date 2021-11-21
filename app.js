@@ -236,7 +236,6 @@ app.post("/acceptRequest", function (req, res, next) {
   const query = `insert into contrato (talento, idProyecto, horasPago, puntosContrato, estrellasObtenidasTalento, estrellasObtenidasCazador) VALUES (${idTalento}, ${idProyecto}, ${costoHora}, 15, 0, 0);`;
   db.query(query, function (err, data) {
     if (err) {
-      console.log(err);
       res.send(JSON.stringify({ status: false }));
     } else {
       res.send(JSON.stringify({ status: true }));
@@ -264,7 +263,6 @@ app.post("/updateStars", function (req, res, next) {
   var sqlUpdateTalento = `UPDATE ${userType} SET estrellas='${estrellas}' WHERE ${userType}.nombre="${nameUser}";`;
   db.query(sqlUpdateTalento, function (err, data) {
     if (err) {
-      console.log(err);
       res.send(JSON.stringify({ status: false }));
     } else {
       res.send(JSON.stringify({ status: true }));
