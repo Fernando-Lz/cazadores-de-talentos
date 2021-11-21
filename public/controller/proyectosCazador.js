@@ -165,6 +165,32 @@ function anounceProject() {
   }
 }
 
+fetch("/getCompletedContratos", {
+  method: "POST",
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+  },
+  body: JSON.stringify({
+    idCazador: sessionStorage.getItem("idCazador"),
+  }),
+})
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    if (data.activeProject === false) {
+    } else {
+      sessionStorage.setItem("contratoName", data[0].nombre);
+      sessionStorage.setItem("contratoTalento", data[0].talento);
+      sessionStorage.setItem("contratoTipo", "cazador");
+      if(confirm("Tienes un contrato listo para calificar, quieres checarlo?")){
+        window.location.href = "../forms/evaluarTalento.html";
+      }
+    } 
+  })
+  .catch((e) => {
+    alert(e);
+  });
 function acceptRequest(requestCard) {
   const idTalento = requestCard.getElementsByClassName(
     "id-talento-solicitud"

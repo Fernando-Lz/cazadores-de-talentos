@@ -107,6 +107,20 @@ app.post("/getActiveProject", function (req, res, next) {
   });
 });
 
+app.post("/getCompletedContratos", function (req, res, next) {
+  const idCazador = req.body.idCazador;
+  const idTalento = req.body.idTalento;
+  const query = `SELECT proyecto.nombre, cazador.nombre AS cazador, talento.nombre AS talento FROM proyecto, contrato, talento, cazador WHERE (proyecto.cazador = '${idCazador}' OR proyecto.talento = '${idTalento}') AND (proyecto.cazador = cazador.idCazador OR proyecto.talento = talento.idTalento) AND proyecto.idProyecto = contrato.idProyecto AND contrato.statusContrato = "Terminado" GROUP BY proyecto.nombre;`;
+  db.query(query, function (err, data) {
+    proyectoList = JSON.stringify(data);
+    if (proyectoList === "[]") {
+      res.send(JSON.stringify({ activeProject: false }));
+    } else {
+      res.send(JSON.stringify(data));
+    }
+  });
+});
+
 app.post("/getProjectsCazador", function (req, res, next) {
   const idCazador = req.body.idCazador;
   const query = `SELECT proyecto.nombre, proyecto.descripcion, proyecto.tipo, proyecto.vacantes, proyecto.idProyecto, proyecto.anunciado FROM contrato, proyecto, cazador WHERE proyecto.cazador = cazador.idCazador AND proyecto.cazador = ${idCazador} group by nombre;`;
@@ -223,7 +237,6 @@ app.post("/acceptRequest", function (req, res, next) {
   const queryDelete = `DELETE FROM solicitudes WHERE talento = ${idTalento} AND idProyecto = ${idProyecto};`;
   db.query(query, function (err, data) {
     if (err) {
-      console.log(err);
       res.send(JSON.stringify({ status: false }));
     } else {
       db.query(queryDelete, function (error, dataC) {
@@ -242,7 +255,20 @@ app.post("/denyRequest", function (req, res, next) {
   const query = `DELETE FROM solicitudes WHERE talento = ${idTalento} AND idProyecto = ${idProyecto};`;
   db.query(query, function (err, data) {
     if (err) {
-      console.log(err);
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify({ status: true }));
+    }
+  });
+});
+
+app.post("/updateStars", function (req, res, next) {
+  const userType = req.body.userType;
+  const nameUser = req.body.nameUser;
+  const estrellas = req.body.estrellas;
+  var sqlUpdateTalento = `UPDATE ${userType} SET estrellas='${estrellas}' WHERE ${userType}.nombre="${nameUser}";`;
+  db.query(sqlUpdateTalento, function (err, data) {
+    if (err) {
       res.send(JSON.stringify({ status: false }));
     } else {
       res.send(JSON.stringify({ status: true }));
