@@ -37,9 +37,8 @@ fetch("/getProjectTalent", {
   .catch((e) => {
     alert(e);
   });
-  
-  
-  fetch("/getCompletedContratos", {
+
+/*fetch("/getCompletedContratos", {
     method: "POST",
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -65,4 +64,4 @@ fetch("/getProjectTalent", {
     })
     .catch((e) => {
       alert(e);
-    });
+    });*/

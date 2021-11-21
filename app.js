@@ -234,10 +234,22 @@ app.post("/acceptRequest", function (req, res, next) {
   const idTalento = req.body.idTalento;
   const costoHora = req.body.costoHora;
   const query = `insert into contrato (talento, idProyecto, horasPago, puntosContrato, estrellasObtenidasTalento, estrellasObtenidasCazador) VALUES (${idTalento}, ${idProyecto}, ${costoHora}, 15, 0, 0);`;
+  const queryDelete = `DELETE FROM solicitudes WHERE talento = ${idTalento} AND idProyecto = ${idProyecto};`;
+  const queryUpdate = `UPDATE proyecto SET vacantes = vacantes - 1 Where idProyecto = ${idProyecto};`;
   db.query(query, function (err, data) {
     if (err) {
       res.send(JSON.stringify({ status: false }));
     } else {
+      db.query(queryDelete, function (error, dataC) {
+        if (error) {
+          res.send(JSON.stringify({ status: false }));
+          db.query(queryUpdate, function (error, dataC) {
+            if (error) {
+              res.send(JSON.stringify({ status: false }));
+            }
+          });
+        }
+      });
       res.send(JSON.stringify({ status: true }));
     }
   });
