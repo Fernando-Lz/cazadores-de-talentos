@@ -258,6 +258,22 @@ app.post("/denyRequest", function (req, res, next) {
   });
 });
 
+app.post("/updateStars", function (req, res, next) {
+  const userType = req.body.userType;
+  const nameUser = req.body.nameUser;
+  const estrellas = req.body.estrellas;
+  var sqlUpdateTalento = `UPDATE ${userType} SET estrellas='${estrellas}' WHERE ${userType}.nombre="${nameUser}";`;
+  console.log(sqlUpdateTalento);
+  db.query(sqlUpdateTalento, function (err, data) {
+    if (err) {
+      console.log(err);
+      res.send(JSON.stringify({ status: false }));
+    } else {
+      res.send(JSON.stringify({ status: true }));
+    }
+  });
+});
+
 // PORT
 app.listen(PORT, function () {
   console.log(`Server is listening to port ${PORT}`);
