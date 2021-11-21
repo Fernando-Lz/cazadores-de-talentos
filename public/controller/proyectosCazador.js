@@ -179,7 +179,6 @@ fetch("/getCompletedContratos", {
   })
   .then((data) => {
     if (data.activeProject === false) {
-      console.log("Error");
     } else {
       sessionStorage.setItem("contratoName", data[0].nombre);
       sessionStorage.setItem("contratoTalento", data[0].talento);
