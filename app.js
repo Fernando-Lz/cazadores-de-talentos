@@ -266,12 +266,13 @@ app.post("/acceptRequest", function (req, res, next) {
       db.query(queryDelete, function (error, dataC) {
         if (error) {
           res.send(JSON.stringify({ status: false }));
-          db.query(queryUpdate, function (error, dataC) {
-            if (error) {
-              res.send(JSON.stringify({ status: false }));
-            }
-          });
         }
+        db.query(queryUpdate, function (error2, dataD) {
+          if (error2) {
+            res.send(JSON.stringify({ status: false }));
+          }
+        });
+
       });
       res.send(JSON.stringify({ status: true }));
     }
