@@ -20,6 +20,7 @@ insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Mari
 insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Gabriela", "freelancecompany@gmail.com", ".aT5e2Fg", "Veracruz", 5);
 insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Daniela", "seguridadTovar@gmail.com", "python09856", "Tlaxcala", 2);
 insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Gerardo", "ai.systems@hotmail.com", "123odioloslunes456", "Oaxaca", 3);
+insert into cazador (nombre, correo, contrasena, lugar, estrellas) VALUES ("Juan", "123@udlap.mx", "123", "Puebla", 5);
 
 insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (1, "Tienda de Pasteleria Pepita", "Desarrollo Web", 5, "Creacion de una tienda en linea.");
 insert into proyecto (cazador, nombre, tipo, vacantes, descripcion) VALUES (2, "Nueva App - Trelawny", "Desarrollo Móvil", 2, "Creacion de una app de telefono.");
